@@ -4,6 +4,7 @@ For example, given input 43261596 (represented in binary as 00000010100101000001
 */
 
 public class Solution {
+    // you need treat n as an unsigned value
     public int reverseBits(int n) {
         int total = 32;
         for (int i = 0; i < total / 2; i++)
@@ -14,7 +15,7 @@ public class Solution {
     private int swapBits(int n, int i, int j) {
         int lo = (n >> i) & 1;
         int hi = (n >> j) & 1;
-        if((lo ^ hi) == 1) n ^= ((1 << i) | (1 << j));
+        if ((lo ^ hi) == 1) n ^= ((1 << i) | (1 << j));
         return n;
     }
 }
