@@ -16,12 +16,9 @@ public class Solution {
     	int pre = 0;
     	for (int i = s.length() - 1; i >= 0; i--) {
     		int val = map.get(s.charAt(i));
-    		// for equal case, also add it to result
-    		if (val >= pre)
-    			res += val;
-    		else
-    			res -= val;
-    		pre = val;
+    		// for equal case, also add it to result    		
+		res += (value>=pre?value:-value);
+		pre = value;
     	}
     
     	return res;

@@ -6,10 +6,9 @@ public class Solution {
             if (c == '(' || c == '[' || c == '{')
                 st.push(c);
             else {
-                if (st.empty()) return false;
-                char top = st.pop();
-                if ((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{'))
+                if (st.isEmpty() || (c == ')' && st.peek() != '(') || (c == ']' && st.peek() != '[') || (c == '}' && st.peek() != '{'))
                     return false;
+                st.pop();
             }
         }
         // return if stack is empty
