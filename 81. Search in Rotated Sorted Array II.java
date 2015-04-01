@@ -5,10 +5,10 @@ public class Solution {
             int mid = (l + r) / 2;
             if (A[mid] == target) return true;
             else if (A[l] < A[mid]) {
-                if (A[l] <= target && target < A[mid]) r = mid - 1;
+                if (A[l] <= target && target <= A[mid]) r = mid - 1;
                 else l = mid + 1;
             } else if (A[l] > A[mid]) {
-                if (A[mid] < target && target <= A[r]) l = mid + 1;
+                if (A[mid] <= target && target <= A[r]) l = mid + 1;
                 else r = mid - 1;
             } else
                 l++;

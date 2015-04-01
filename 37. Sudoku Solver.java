@@ -5,11 +5,11 @@ public class Solution {
 
     private boolean solveSudokuHelper(char[][] board, int index) {
         if (index == 81) return true;
-        int i = index / 9, j = index - i * 9;
+        int i = index / 9, j = index % 9;
         if (board[i][j] != '.') return solveSudokuHelper(board, index + 1);
 
         for (int val = 1; val <= 9; val++) {
-            if (isVallid(board, i, j, val)) {
+            if (isValid(board, i, j, val)) {
                 board[i][j] = Character.forDigit(val, 10);
                 if (solveSudokuHelper(board, index + 1)) return true;
                 board[i][j] = '.';
@@ -18,7 +18,7 @@ public class Solution {
         return false;
     }
 
-    private boolean isVallid(char[][] board, int i, int j, int val) {
+    private boolean isValid(char[][] board, int i, int j, int val) {
         for (int index = 0; index < 9; index++) {
             if (board[i][index] == Character.forDigit(val, 10)) return false;
             if (board[index][j] == Character.forDigit(val, 10)) return false;

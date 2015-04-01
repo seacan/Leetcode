@@ -18,7 +18,7 @@ public class Solution {
 
         int pre = 0; // track the used value at same position
         for (int i = index; i < num.length && target - num[i] >= 0; i++) {
-            if (i > 0 && num[i] == pre) continue; // skip using the same value at same position
+            if (i > index && num[i] == pre) continue; // skip using the same value at same position
             sol.add(num[i]);
             combinationSum2Helper(num, i + 1, target - num[i], sol, res);
             sol.remove(sol.size() - 1);

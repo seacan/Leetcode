@@ -6,13 +6,13 @@ public class Solution {
                 if (board[i][j] != '.'){
                     int val = board[i][j] - '0';
                     if ((row[i] >> val & 1) == 1) return false;
-                    else row[i] |= 1 << val;
+                    row[i] |= 1 << val;
                     if ((col[j] >> val & 1) == 1) return false;
-                    else col[j] |= 1 << val;
+                    col[j] |= 1 << val;
                     // locate section index by the factor of 3
                     int index = i / 3 * 3 + j / 3;
                     if ((section[index] >> val & 1) == 1) return false;
-                    else section[index] |= 1 << val;
+                    section[index] |= 1 << val;
                 }
         return true;
     }
