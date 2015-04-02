@@ -10,7 +10,7 @@ public class Solution {
             }
 
             // move the pointer with less height
-            if (A[l] < A[r]) block += A[l++];
+            if (A[l] <= A[r]) block += A[l++];
             else block += A[r--];
         }
 

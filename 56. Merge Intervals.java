@@ -5,23 +5,15 @@ public class Solution {
 
         Collections.sort(intervals, new Comparator<Interval>() {
             public int compare(Interval i1, Interval i2) {
-                if (i1.start != i2.start)
-                    return i1.start - i2.start;
-                else
-                    return i1.end - i2.end;
+                if (i1.start != i2.start) return i1.start - i2.start;
+                else return i1.end - i2.end;
             }
         });
 
         for (int i = 0; i < intervals.size(); ) {
-            Interval cur = intervals.get(i++);
-            while (i < intervals.size())
-                if (intervals.get(i).start <= cur.end) {
-                    cur.end = Math.max(intervals.get(i).end, cur.end);
-                    i++;
-                } else
-                    break;
-
-            merged.add(cur);
+            merged.add(intervals.get(i++));
+            for (; i < intervals.size() && intervals.get(i).start <= merged.get(merged.size() - 1).end; i++)
+                merged.get(merged.size() - 1).end = Math.max(merged.get(merged.size() - 1).end, intervals.get(i).end);
         }
         return merged;
     }

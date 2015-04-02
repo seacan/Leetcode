@@ -7,12 +7,12 @@ public class Solution {
         for (; i < intervals.size(); i++) {
             if (intervals.get(i).end < newInterval.start)
                 res.add(intervals.get(i));
-            else if (intervals.get(i).end >= newInterval.start && intervals.get(i).start <= newInterval.end) {
+            else if (intervals.get(i).start > newInterval.end)
+                break;
+            else {
                 newInterval.start = Math.min(newInterval.start, intervals.get(i).start);
                 newInterval.end = Math.max(newInterval.end, intervals.get(i).end);
-            } else
-                // break here, add newInterval outside loop in case loop hit the end of list
-                break;
+            }
         }
 
         res.add(newInterval);
