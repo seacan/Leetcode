@@ -3,8 +3,7 @@ public class Solution {
         if (T.isEmpty()) return "";
             int total = T.length();
             HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-            for (int i = 0; i < T.length(); i++)
-                map.put(T.charAt(i), map.containsKey(T.charAt(i)) ? map.get(T.charAt(i)) + 1 : 1);
+            for (char t : T.toCharArray()) map.put(t, map.containsKey(t) ? map.get(t) + 1 : 1);
 
             Deque<Integer> queue = new LinkedList<Integer>();
             String str = "";
@@ -12,8 +11,8 @@ public class Solution {
             for (int i = 0; i < S.length(); i++)
                 if (map.containsKey(S.charAt(i))) {
                     queue.add(i);
-                    map.put(S.charAt(i), map.get(S.charAt(i)) - 1);
-                    if (map.get(S.charAt(i)) >= 0) total--;
+                    if (map.get(S.charAt(i)) > 0) total--;
+                    map.put(S.charAt(i), map.get(S.charAt(i)) - 1);    
 
                     while (map.get(S.charAt(queue.peek())) < 0) {
                         int index = queue.poll();

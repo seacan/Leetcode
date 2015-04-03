@@ -1,20 +1,20 @@
 public class Solution {
+    private List<List<Integer>> res = new ArrayList<List<Integer>>();
+    private List<Integer> sol = new ArrayList<Integer>();
     public List<List<Integer>> combine(int n, int k) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
-        List<Integer> sol = new ArrayList<Integer>();
-        combineHelper(n, k, 1, sol, res);
+        combineHelper(1, n, k);
         return res;
     }
-
-    private void combineHelper(int n, int k, int index, List<Integer> sol, List<List<Integer>> res) {
-        if (sol.size() == k) {
+    
+    private void combineHelper(int index, int n, int size) {
+        if (sol.size() == size) {
             res.add(new ArrayList<Integer>(sol));
             return;
         }
-
+        if (sol.size() > size) return;
         for (int i = index; i <= n; i++) {
             sol.add(i);
-            combineHelper(n, k, i + 1, sol, res);
+            combineHelper(i + 1, n, size);
             sol.remove(sol.size() - 1);
         }
     }

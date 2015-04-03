@@ -4,17 +4,14 @@ public class Solution {
 
         int length = 0;
         ListNode runner = head;
-        while (runner != null && k > 0) {
+        while(k>0) {
+            k--;
             runner = runner.next;
             length++;
-            k--;
-        }
-        if (runner == null) {
-            if (k == 0) return head;
-            k = k % length;
-            runner = head;
-            for (; k > 0; k--)
-                runner = runner.next;
+            if (runner == null) {
+                k = k % length;
+                runner = head;
+            }
         }
         
         // handle this special case, when nothing needs to rotate

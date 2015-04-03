@@ -4,7 +4,7 @@ public class Solution {
         if (A == null || A.length == 0) return;
         int l = 0, r = A.length - 1;
         // l must be less than r, also should not move beyond r
-        for (int i = 0; i < A.length && l < r && i <= r;)
+        for (int i = 0; i <= r && l < r;)
             // only swap when i not equals to position of l or r
             if (A[i] == 0 && i != l) {
                 A[i] = A[l];
@@ -23,7 +23,7 @@ public class Solution {
     public void sortColors(int[] A) {
         if (A == null || A.length == 0) return;
         int l = 0, r = A.length - 1;
-        for (int i = 0; i < A.length && l < r && i <= r; i++)
+        for (int i = 0; i <= r && l < r; i++)
             if (A[i] == 0) {
                 if(i != l){
                     A[i--] = A[l];
