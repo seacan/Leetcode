@@ -21,7 +21,7 @@ public class Solution {
                     String newString = cur.substring(0, i) + c + cur.substring(i + 1);
                     if (ladder.containsKey(newString)) {
                         if (step > ladder.get(newString)) continue;
-                        else if (step < ladder.get(newString)) {
+                        if (step < ladder.get(newString)) {
                             // enqueue and update step
                             queue.add(newString);
                             ladder.put(newString, step);

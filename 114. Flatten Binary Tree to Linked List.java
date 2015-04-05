@@ -1,17 +1,16 @@
-// Solution 1. Treat left and right subtree separately
+// Solution 1. recursive solution
 public class Solution {
     public void flatten(TreeNode root) {
         if (root == null) return;
         TreeNode left = root.left, right = root.right;
-        if (root.left != null) flatten(root.left);
-        if (root.right != null) flatten(root.right);
-
+        flatten(left);
         root.left = null;
         if (left != null) {
             root.right = left;
             while (left.right != null) left = left.right;
             left.right = right;
         }
+        flatten(right);
     }
 }
 
