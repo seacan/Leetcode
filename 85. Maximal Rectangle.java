@@ -9,15 +9,11 @@ public class Solution {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 ones[j] = matrix[i][j] == '1' ? ones[j] + 1 : 0;
-                while (st.peek() != -1)
-                    if (ones[j] < ones[st.peek()])
-                        max = Math.max(max, ones[st.pop()] * (j - 1 - st.peek()));
-                    else
-                        break;
+                while (st.peek() != -1 && ones[j] < ones[st.peek()])
+                    max = Math.max(max, ones[st.pop()] * (j - 1 - st.peek()));
                 st.push(j);
             }
             
-            // last while is outside second for loop
             while (st.peek() != -1)
                     max = Math.max(max, ones[st.pop()] * (ones.length - 1 - st.peek()));
         }

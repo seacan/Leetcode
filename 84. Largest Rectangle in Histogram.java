@@ -5,11 +5,8 @@ public class Solution {
         Stack<Integer> st = new Stack<Integer>();
         st.push(-1);
         for (int i = 0; i < height.length; i++) {
-            while (st.peek() != -1)
-                if (height[i] < height[st.peek()])
+            while (st.peek() != -1 && height[i] < height[st.peek()])
                     max = Math.max(max, height[st.pop()] * (i - st.peek() - 1));
-                else
-                    break;
             st.push(i);
         }
 

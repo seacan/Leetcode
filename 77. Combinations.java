@@ -11,7 +11,7 @@ public class Solution {
             res.add(new ArrayList<Integer>(sol));
             return;
         }
-        if (sol.size() > size) return;
+
         for (int i = index; i <= n; i++) {
             sol.add(i);
             combineHelper(i + 1, n, size);

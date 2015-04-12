@@ -9,11 +9,14 @@ public class Solution {
                 else return i1.end - i2.end;
             }
         });
-
-        for (int i = 0; i < intervals.size(); ) {
-            merged.add(intervals.get(i++));
-            for (; i < intervals.size() && intervals.get(i).start <= merged.get(merged.size() - 1).end; i++)
-                merged.get(merged.size() - 1).end = Math.max(merged.get(merged.size() - 1).end, intervals.get(i).end);
+        
+        merged.add(intervals.get(0));
+        for (int i = 1; i < intervals.size(); i++) {
+            Interval last = merged.get(merged.size() - 1);
+            if (last.end >= intervals.get(i).start)
+                last.end = Math.max(last.end, intervals.get(i).end);
+            else
+                merged.add(intervals.get(i));
         }
         return merged;
     }
