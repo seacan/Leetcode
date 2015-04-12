@@ -9,39 +9,26 @@
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null) return null;
-        RandomListNode runner = head;
-        while (runner != null) {
-            RandomListNode next = new RandomListNode(runner.label);
-            next.next = runner.next;
-            runner.next = next;
-            runner = next.next;
+        for (RandomListNode runner = head; runner != null; runner = runner.next.next) {
+            RandomListNode copy = new RandomListNode(runner.label);
+            copy.next = runner.next;
+            runner.next = copy;
         }
+        for (RandomListNode runner = head; runner != null; runner = runner.next.next)
+            runner.next.random = runner.random == null ? null : runner.random.next;
 
-        runner = head;
-        RandomListNode next = head.next;
+        RandomListNode newHead = head.next, runner = newHead;
         while (true) {
-            next.random = runner.random == null ? null : runner.random.next;
-            runner = runner.next.next;
-            if (runner == null) break;
-            next = runner.next;
-        }
-
-        RandomListNode newhead = head.next;
-        runner = newhead;
-        while (true) {
-            next = runner.next;
-            if (next != null) {
-                head.next = next;
-                runner.next = next.next;
-                head = next;
-                runner = runner.next;
-            } else {
+            if (runner.next == null) {
                 head.next = null;
-                runner.next = null;
                 break;
             }
+            head.next = runner.next;
+            runner.next = runner.next.next;
+            head = head.next;
+            runner = runner.next;
         }
 
-        return newhead;
+        return newHead;
     }
 }

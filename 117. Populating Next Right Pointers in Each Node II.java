@@ -3,31 +3,29 @@ public class Solution {
         if (root == null) return;
         root.next = null;
         while (root != null) {
-            TreeLinkNode head = root;
-            TreeLinkNode nextHead = null, last = null;
-            while (head != null) {
-                if (head.left != null) {
-                    if (nextHead == null) {
-                        nextHead = head.left;
-                        last = nextHead;
+            TreeLinkNode first = null, last = null;
+            for (TreeLinkNode runner = root; runner != null; runner = runner.next) {
+                if (runner.left != null) {
+                    if (first == null) {
+                        first = runner.left;
+                        last = runner.left;
                     } else {
-                        last.next = head.left;
-                        last = head.left;
+                        last.next = runner.left;
+                        last = runner.left;
                     }
                 }
-                if (head.right != null) {
-                    if (nextHead == null) {
-                        nextHead = head.right;
-                        last = nextHead;
+
+                if (runner.right != null) {
+                    if (first == null) {
+                        first = runner.right;
+                        last = runner.right;
                     } else {
-                        last.next = head.right;
-                        last = head.right;
+                        last.next = runner.right;
+                        last = runner.right;
                     }
                 }
-                head = head.next;
             }
-            if (head != null) head.next = null;
-            root = nextHead;
+            root = first;
         }
     }
 }

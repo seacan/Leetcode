@@ -4,9 +4,9 @@ public class Solution {
         if (root == null) return;
         TreeNode left = root.left, right = root.right;
         flatten(left);
-        root.left = null;
         if (left != null) {
             root.right = left;
+            root.left = null;
             while (left.right != null) left = left.right;
             left.right = right;
         }

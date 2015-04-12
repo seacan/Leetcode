@@ -18,10 +18,7 @@ public class Solution {
         }
 
         sol.add(root.val);
-        pathSumHelper(root.left, sum - root.val, sol, res);
-        sol.remove(sol.size() - 1);
-
-        sol.add(root.val);
+        pathSumHelper(root.left, sum - root.val, sol, res);       
         pathSumHelper(root.right, sum - root.val, sol, res);
         sol.remove(sol.size() - 1);
 

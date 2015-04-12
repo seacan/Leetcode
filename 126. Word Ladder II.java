@@ -50,7 +50,7 @@ public class Solution {
         }
 
         sol.add(0, end);
-        if (map.get(end) != null)
+        if (map.containsKey(end))
             for (String s : map.get(end))
                 backTrace(s, start, sol);
         sol.remove(0);

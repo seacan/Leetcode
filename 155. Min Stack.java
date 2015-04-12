@@ -17,6 +17,17 @@ class MinStack {
         long pop = stack.pop();
         if (pop < 0) min = min - pop;
     }
+	
+	 public int pop() {
+        if (stack.empty()) return -1;
+        long pop = stack.pop();
+		if (pop >=0) return (int) (min + pop);
+		else {
+			long curMin = min;
+			min = min - pop;
+			return (int) curMin;
+		}
+    }
 
     public int top() {
         long top = stack.peek();
