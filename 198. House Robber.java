@@ -6,7 +6,7 @@ public class Solution {
         cache[0] = num[0];
         cache[1] = num[0] > num[1] ? num[0] : num[1];
         for (int i = 2; i < num.length; i++)
-            cache[i] = Math.max(cache[i - 2] + num[i], cache[i-1]);
+            cache[i] = Math.max(cache[i - 2] + num[i], cache[i - 1]);
         return cache[num.length - 1];
     }
 }

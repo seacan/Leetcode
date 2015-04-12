@@ -21,7 +21,7 @@ public class Solution {
             if (map.containsKey(num)) {
                 res.insert(map.get(num), "(");
                 res.append(")");
-                return res.toString();
+                break;
             } else
                 map.put(num, res.length());
         }

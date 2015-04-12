@@ -18,17 +18,16 @@ public class Solution {
 
 //Solution 2: 
 public class Solution {
-    public void levelOrder(TreeNode root, int currentLevel, List<Integer> rideSideNodes) {
-		if (root == null) return;
-		if (currentLevel > rideSideNodes.size()) rideSideNodes.add(root.val);
-		levelOrder(root.right, currentLevel + 1, rideSideNodes);
-		levelOrder(root.left, currentLevel + 1, rideSideNodes);
-	}
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> rideSideNodes = new ArrayList<Integer>();
+        levelOrder(root, 1, rideSideNodes);
+        return rideSideNodes;
+    }
 
-	public List<Integer> rightSideView(TreeNode root) {
-		List<Integer> rideSideNodes = new ArrayList<Integer>();
-		int currentLevel = 1;
-		levelOrder(root, currentLevel, rideSideNodes);
-		return rideSideNodes;
-	}
+    private void levelOrder(TreeNode root, int currentLevel, List<Integer> rideSideNodes) {
+        if (root == null) return;
+        if (currentLevel > rideSideNodes.size()) rideSideNodes.add(root.val);
+        levelOrder(root.right, currentLevel + 1, rideSideNodes);
+        levelOrder(root.left, currentLevel + 1, rideSideNodes);
+    }
 }
