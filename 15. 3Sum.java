@@ -4,8 +4,7 @@ public class Solution {
         if (num.length < 3) return res;
         Arrays.sort(num);
         for (int i = 0; i < num.length - 2; i++) {
-            if (i > 0 && num[i] == num[i - 1])
-                continue;
+            if (i > 0 && num[i] == num[i - 1]) continue;
             int l = i + 1, r = num.length - 1;
             while (l < r) {
                 if (num[i] + num[l] + num[r] == 0) {

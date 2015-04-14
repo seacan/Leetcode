@@ -9,8 +9,7 @@ public class Solution {
         Arrays.sort(num);
         int res = num[0] + num[1] + num[2];
         for (int i = 0; i < num.length - 2; i++) {
-            if (i > 0 && num[i] == num[i - 1])
-                continue;
+            if (i > 0 && num[i] == num[i - 1]) continue;
             int l = i + 1, r = num.length - 1;
             while (l < r) {
                 int sum = num[i] + num[l] + num[r];
