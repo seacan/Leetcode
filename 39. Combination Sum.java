@@ -15,7 +15,7 @@ public class Solution {
             res.add(new ArrayList<Integer>(sol));
             return;
         }
-        if (index >= candidates.length) return;
+        if (index == candidates.length) return;
 
         for (int i = 0; target - candidates[index] * i >= 0; i++) {
             for (int j = 0; j < i; j++) sol.add(candidates[index]);

@@ -1,12 +1,10 @@
 public class Solution {
-    public ListNode mergeKLists(List<ListNode> lists) {
-        if (lists == null || lists.size() == 0) return null;
-        Queue<ListNode> q = new PriorityQueue<ListNode>(lists.size(), new Comparator<ListNode>() {
+    public ListNode mergeKLists(ListNode[] lists) {
+        if (lists == null || lists.length == 0) return null;
+        Queue<ListNode> q = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>() {
             @Override
             public int compare(ListNode o1, ListNode o2) {
-                if (o1.val > o2.val) return 1;
-                else if (o1.val < o2.val) return -1;
-                else return 0;
+                return o1.val-o2.val;
             }
         });
 

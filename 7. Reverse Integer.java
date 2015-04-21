@@ -7,8 +7,7 @@ public class Solution {
     		val /= 10;
     	}
     
-    	if (reverse > Integer.MAX_VALUE || reverse < Integer.MIN_VALUE)
-    		return 0;
+        if (reverse > Integer.MAX_VALUE) return 0;
     	return x >= 0 ? (int) reverse : (int) reverse * -1;
     }
 }

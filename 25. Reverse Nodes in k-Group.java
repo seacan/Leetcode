@@ -16,15 +16,13 @@ public class Solution {
     }
 
     private ListNode reverse(ListNode head, int k) {
-        ListNode front = head.next, first = front, second = first.next;
+        ListNode front = head.next;
         for (int i = 0; i < k - 1; i++) {
-            ListNode temp = second.next;
-            second.next = first;
-            first = second;
-            second = temp;
+            ListNode cur = front.next;
+            front.next = cur.next;
+            cur.next = head.next;
+            head.next = cur;
         }
-        head.next = first;
-        front.next = second;
         return front;
     }
 }
