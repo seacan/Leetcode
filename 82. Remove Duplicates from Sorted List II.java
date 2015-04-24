@@ -3,14 +3,13 @@ public class Solution {
         ListNode pre = new ListNode(0);
         pre.next = head;
 
-        ListNode cur = pre, runner = head;
-        while (runner != null) {
-            while (runner.next != null && runner.next.val == runner.val)
+        ListNode cur = pre;
+        while (cur != null) {
+            ListNode next = cur.next, runner = cur.next;
+            while (runner != null && runner.next != null && runner.next.val == runner.val)
                 runner = runner.next;
-            // forward cur only when next node is not duplicated
-            if (runner == cur.next) cur = cur.next;
+            if (runner == next) cur = cur.next;
             else cur.next = runner.next;
-            runner = runner.next;
         }
         return pre.next;
     }

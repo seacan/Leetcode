@@ -5,8 +5,7 @@ public class Solution {
 
         Collections.sort(intervals, new Comparator<Interval>() {
             public int compare(Interval i1, Interval i2) {
-                if (i1.start != i2.start) return i1.start - i2.start;
-                else return i1.end - i2.end;
+                return i1.start != i2.start ? i1.start - i2.start : i1.end - i2.end;
             }
         });
         

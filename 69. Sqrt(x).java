@@ -1,3 +1,4 @@
+// for int case
 public class Solution {
     public int sqrt(int x) {
         if (x == 0 || x == 1) return x;
@@ -11,4 +12,20 @@ public class Solution {
         }
         return ans;
     }
+}
+
+
+// for double case
+private double delta = 0.001;
+public double sqrt(int x) {
+    if (x == 0 || x == 1) return x;
+    double l = 1, r = x, res = 1;
+    while (l + delta < r) {
+        double mid = (r + l) / 2;
+        if (mid * mid <= x) {
+            res = mid;
+            l = mid + delta;
+        } else r = mid - delta;
+    }
+    return res;
 }
