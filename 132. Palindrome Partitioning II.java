@@ -2,7 +2,7 @@ public class Solution {
     public int minCut(String s) {
         if (s == null || s.length() == 0) return 0;
         int[] cut = new int[s.length() + 1];
-        Arrays.fill(cut, Integer.MAX_VALUE);
+        Arrays.fill(cut, s.length() - 1);
         cut[s.length()] = -1;
         for (int i = s.length() - 1; i >= 0; i--) {
             for (int l = i, r = i; l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r); l--, r++)
