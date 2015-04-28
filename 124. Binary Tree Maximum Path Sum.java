@@ -1,7 +1,6 @@
 public class Solution {
     private int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
-        if (root == null) return 0;
         maxPathSumHelper(root);
         return max;
     }
