@@ -5,10 +5,12 @@ public class Solution {
             if (count == 0) {
                 major = num[i];
                 count = 1;
-            } else if (num[i] == major) {
-                count++;
-                if (count > num.length / 2) return major;
-            } else count--;
+            } else {
+                if (num[i] == major) {
+                    count++;
+                    if (count > num.length / 2) return major;
+                } else count--;
+            }
         }
         return major;
     }
