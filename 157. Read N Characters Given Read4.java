@@ -11,16 +11,15 @@ public class Solution extends Reader4 {
 
         char[] buffer = new char[4];
         boolean endOfFile = false;
-        int readBytes = 0;
+        int cur = 0;
 
-        while (readBytes < n && !endOfFile) {
-            int currReadBytes = read4(buffer);
-            if (currReadBytes < 4) endOfFile = true;            
-            int length = Math.min(n - readBytes, currReadBytes);
-            for (int i=0; i<length; i++)
-                buf[readBytes + i] = buffer[i];           
-            readBytes += length;
+        while (cur < n && !endOfFile) {
+            int buffCnt = read4(buffer);
+            if (buffCnt < 4) endOfFile = true;            
+            int bufferPtr = 0;
+            while (cur < n && buffPtr < buffCnt)
+               buf[cur++] = buff[buffPtr++];                      
         }
-        return readBytes;
+        return cur;
     }
 }

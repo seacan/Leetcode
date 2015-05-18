@@ -3,7 +3,7 @@ public class Solution {
         if (prerequisites == null || prerequisites.length == 0) return true;
         HashSet<Integer>[] graph = new HashSet[numCourses];
         for (int i = 0; i < numCourses; i++) graph[i] = new HashSet<Integer>();
-        for (int i = 0; i < prerequisites.length; i++) graph[prerequisites[i][1]].add(prerequisites[i][0]);
+        for (int i = 0; i < prerequisites.length; i++) graph[prerequisites[i][0]].add(prerequisites[i][1]);
         boolean[] visited = new boolean[numCourses];
         boolean[] visiting = new boolean[numCourses];
         for (int i = 0; i < numCourses; i++)
