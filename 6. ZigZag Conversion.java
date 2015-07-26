@@ -6,12 +6,12 @@ public class Solution {
         // need to initialize all element in array
         for (int i = 0; i < buffers.length; i++) buffers[i] = new StringBuffer();
         int bufferIndex = 0, nextBuffer = 1;
-        for (int i = 0; i < s.length(); i++) {
-            buffers[bufferIndex].append(s.charAt(i));
+        for (int i = 0; i < s.length(); i++) {            
             if (bufferIndex == nRows - 1)
                 nextBuffer = -1;
             if (bufferIndex == 0)
                 nextBuffer = 1;
+            buffers[bufferIndex].append(s.charAt(i));
             bufferIndex += nextBuffer;
         }
         for (int i = 1; i < buffers.length; i++)

@@ -11,13 +11,12 @@ public class Solution {
 
         // hanle deleting head case
         if (front == null) return head.next;
-        ListNode back = head, pre = head;
-        while (front != null) {
+        ListNode back = head;
+        while (front.next != null) {
             front = front.next;
-            pre = back;
             back = back.next;
         }
-        pre.next = back.next;
+        back.next = back.next.next;
         return head;
     }
 }

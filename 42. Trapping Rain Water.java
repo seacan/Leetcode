@@ -1,3 +1,4 @@
+// Solution 1. Optimized solution, 1 round
 public class Solution {
     public int trap(int[] A) {
         if (A == null || A.length == 0) return 0;
@@ -15,5 +16,26 @@ public class Solution {
         }
 
         return total - block;
+    }
+}
+
+
+
+// Solution 2. Max height rounds
+public class Solution {
+    public int trap(int[] A) {
+        if (A == null || A.length == 0) return 0;
+        int total = 0;
+        while (true) {
+            int l = 0, r = A.length - 1;
+            while (A[l] == 0 && l < r) l++;
+            while (A[r] == 0 && l < r) r--;
+
+            if (l == r) return total;
+            for (int i = l; i <= r; i++) {
+                if (A[i] == 0) total++;
+                A[i] = A[i] == 0 ? 0 : A[i] - 1;
+            }
+        }
     }
 }

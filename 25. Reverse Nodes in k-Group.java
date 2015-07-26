@@ -3,7 +3,7 @@ public class Solution {
         ListNode pre = new ListNode(0);
         pre.next = head;
         ListNode runner = pre;
-        while (runner != null) {
+        while (true) {
             ListNode curRunner = runner;
             for (int i = 0; i < k; i++) {
                 curRunner = curRunner.next;
@@ -12,7 +12,6 @@ public class Solution {
             // reverse function call returns next pre
             runner = reverse(runner, k);
         }
-        return pre.next;
     }
 
     private ListNode reverse(ListNode head, int k) {
