@@ -42,8 +42,8 @@ public class WordDictionary {
         if (c != '.')
             return cur.children.containsKey(c) && search(word.substring(1), cur.children.get(c));
         else {
-            for (char child : cur.children.keySet())
-                if(search(word.substring(1), cur.children.get(child)))
+            for (TrieNode child : cur.children.values())
+                if(search(word.substring(1), child))
                     return true;
         }
         return false;

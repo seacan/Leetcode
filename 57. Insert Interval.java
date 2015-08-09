@@ -4,23 +4,20 @@ public class Solution {
         if (intervals == null || intervals.size() == 0) return new ArrayList<Interval>(Arrays.asList(newInterval));
         List<Interval> res = new ArrayList<Interval>();
         int i = 0;
+        for (; i < intervals.size() && intervals.get(i).end < newInterval.start; i++)
+            res.add(intervals.get(i));
+        res.add(newInterval);
         for (; i < intervals.size(); i++) {
-            if (intervals.get(i).end < newInterval.start)
-                res.add(intervals.get(i));
-            else if (intervals.get(i).start > newInterval.end)
-                break;
+            if (intervals.get(i).start > newInterval.end) res.add(intervals.get(i));
             else {
                 newInterval.start = Math.min(newInterval.start, intervals.get(i).start);
                 newInterval.end = Math.max(newInterval.end, intervals.get(i).end);
             }
         }
-
-        res.add(newInterval);
-        for (; i < intervals.size(); i++)
-            res.add(intervals.get(i));
         return res;
     }
 }
+
 
 // Solution 2: add newInterval to list first, add element from intervals to list on two sides
 public class Solution {

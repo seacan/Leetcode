@@ -19,10 +19,7 @@ public class Solution {
                     for (int j = 0; j < line.size() - 1; j++) {
                         sb.append(line.get(j));
                         for (int k = 0; k < space; k++) sb.append(' ');
-                        if (remain > 0) {
-                            sb.append(' ');
-                            remain--;
-                        }
+                        if (remain-- > 0) sb.append(" ");
                     }
                     sb.append(line.get(line.size() - 1));
                 }

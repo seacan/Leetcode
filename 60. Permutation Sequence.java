@@ -9,11 +9,11 @@ public class Solution {
 
         k--;
         StringBuilder sb = new StringBuilder();
-        // iterate from n to 1 for n digits number
-        for (int i = n; i > 0; i--) {
+        // iterate from n-1 to 0 for n digits number
+        for (int i = n - 1; i >= 0; i--) {
             // how many lower digits num requires decides the highest digit num
-            int index = k / factor[i - 1];
-            k %= factor[i - 1];
+            int index = k / factor[i];
+            k %= factor[i];
             sb.append(num.get(index));
             num.remove(index);
         }

@@ -17,7 +17,7 @@ public class Solution {
         if (index == num.length) return;
 
         for (int i = index; i < num.length && target - num[i] >= 0; i++) {
-            if (i > index && num[i] == num[i] == num[i - 1]) continue; // skip using the same value at same position
+            if (i > index && num[i] == num[i - 1]) continue; // skip using the same value at same position
             sol.add(num[i]);
             combinationSum2Helper(num, i + 1, target - num[i], sol, res);
             sol.remove(sol.size() - 1);

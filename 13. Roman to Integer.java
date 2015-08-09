@@ -1,7 +1,6 @@
 public class Solution {
-    public int romanToInt(String s) {
-        int res = 0;
-    	if (s == null || s.length() == 0) return res;
+    public int romanToInt(String s) {        
+    	if (s == null || s.length() == 0) return 0;
     
     	HashMap<Character, Integer> map = new HashMap<Character, Integer>() {{
     		put('M', 1000);
@@ -13,13 +12,12 @@ public class Solution {
     		put('I', 1);
     	}};
     
-    	int pre = 0;
-    	for (int i = s.length() - 1; i >= 0; i--) {
-    		int val = map.get(s.charAt(i));
-    		// for equal case, also add it to result    		
-		res += (value>=pre?value:-value);
-		pre = value;
-    	}
+    	int res = 0, pre = 0;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int val = map.get(s.charAt(i));
+            res += val >= pre ? val : -val;
+            pre = val;
+        }
     
     	return res;
     }

@@ -15,14 +15,15 @@ public class Solution {
 
 
 // solution 2: indexes
-public class Solution {
-    public int numDistinct(String S, String T) {
+public int numDistinct(String S, String T) {
         HashMap<Character, List<Integer>> map = new HashMap<Character, List<Integer>>();
         for (int i = 0; i < S.length(); i++) {
             if (!map.containsKey(S.charAt(i))) map.put(S.charAt(i), new ArrayList<Integer>(Arrays.asList(i)));
             else map.get(S.charAt(i)).add(i);
         }
-        numDistinctHelper(T, map, new ArrayList<Integer>());
+
+        // push -1, for the first index in sol, any index can be picked
+        numDistinctHelper(T, map, new ArrayList<Integer>(Arrays.asList(-1)));
         return count;
     }
 
@@ -34,20 +35,11 @@ public class Solution {
         }
         char cur = T.charAt(0);
         if(map.containsKey(cur)) {
-            if (sol.size() == 0) {
-                for (Integer index : map.get(cur)) {
+            for (Integer index : map.get(cur))
+                if (index > sol.get(sol.size() - 1)) {
                     sol.add(index);
                     numDistinctHelper(T.substring(1), map, sol);
                     sol.remove(sol.size() - 1);
                 }
-            } else {
-                for (Integer index : map.get(cur))
-                    if (index > sol.get(sol.size() - 1)) {
-                        sol.add(index);
-                        numDistinctHelper(T.substring(1), map, sol);
-                        sol.remove(sol.size() - 1);
-                    }
-            }
         }
     }
-}

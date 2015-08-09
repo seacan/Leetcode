@@ -7,13 +7,12 @@ public class Solution {
         boolean isForward = false;
         while (level.size() != 0) {
             List<TreeNode> cur = new ArrayList<TreeNode>();
-            List<Integer> curValue = new ArrayList<Integer>();
-            // pre list is always in right direction
-            for (int i = 0; i < level.size(); i++)
-                curValue.add(level.get(i).val);
+            List<Integer> pre = new ArrayList<Integer>();
+                
             // process next list from last item in current list
             for (int i = level.size() - 1; i >= 0; i--) {
                 TreeNode node = level.get(i);
+                pre.add(0, node.val);
                 if (isForward) {
                     if (node.left != null) cur.add(node.left);
                     if (node.right != null) cur.add(node.right);
@@ -23,7 +22,7 @@ public class Solution {
                 }
             }
             isForward = !isForward;
-            res.add(curValue);
+            res.add(pre);
             level = cur;
         }
         return res;
