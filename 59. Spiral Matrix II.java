@@ -23,18 +23,18 @@ public class Solution {
 
 // Solution 2: iterative solution
 public int[][] generateMatrix(int n) {
-        int[][] matrix = new int[n][n];
-        generateMatrixHelper(matrix, n);
-        return matrix;
-    }
+    int[][] matrix = new int[n][n];
+    generateMatrixHelper(matrix, n);
+    return matrix;
+}
 
-    private void generateMatrixHelper(int[][] m, int n) {
-        int num = 1;
-        for (int layer = 0; layer < n / 2; layer++) {
-            for (int i = layer; i <= n - 1 - layer; i++) m[layer][i] = num++;
-            for (int i = layer + 1; i <= n - 1 - layer; i++) m[i][n - 1 - layer] = num++;
-            for (int i = n - 1 - layer - 1; i >= layer; i--) m[n - 1 - layer][i] = num++;
-            for (int i = n - 1 - layer - 1; i >= layer + 1; i--) m[i][layer] = num++;
-        }
-        if (n % 2 == 1) m[n / 2][n / 2] = num;
-    }
+private void generateMatrixHelper(int[][] m, int n) {
+    int num = 1;
+	// handle the centre element when n is odd and layer is n/2+1
+    for (int layer = 0; layer < n / 2 + 1; layer++) {
+        for (int i = layer; i <= n - 1 - layer; i++) m[layer][i] = num++;
+        for (int i = layer + 1; i <= n - 1 - layer; i++) m[i][n - 1 - layer] = num++;
+        for (int i = n - 1 - layer - 1; i >= layer; i--) m[n - 1 - layer][i] = num++;
+        for (int i = n - 1 - layer - 1; i >= layer + 1; i--) m[i][layer] = num++;
+    }	
+}

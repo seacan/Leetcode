@@ -19,14 +19,9 @@ public class Trie {
     public void insert(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            TrieNode next;
-            if (cur.children.containsKey(c)) {
-                next = cur.children.get(c);
-            } else {
-                next = new TrieNode();
-                cur.children.put(c, next);
-            }
-            cur = next;
+            if (!cur.children.containsKey(c))
+                cur.children.put(c, new TrieNode());
+            cur = cur.children.get(c);
         }
         cur.isWordEnd = true;
     }
@@ -34,7 +29,7 @@ public class Trie {
     // Returns if the word is in the trie.
     public boolean search(String word) {
         TrieNode p = find(root, word);
-        return p != null && p.isWordEnd;
+        return p != null && p.isWordEnd == true;
     }
 
     // Returns if there is any word in the trie
@@ -43,13 +38,12 @@ public class Trie {
         TrieNode p = find(root, prefix);
         return p != null;
     }
-    
-    private TrieNode find(TrieNode root, String word) {
+
+    TrieNode find(TrieNode root, String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            TrieNode child = cur.children.get(c);
-            if (child == null) return null;
-            else cur = child;
+            if (!cur.children.containsKey(c)) return null;
+            cur = cur.children.get(c);
         }
         return cur;
     }

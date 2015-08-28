@@ -13,7 +13,7 @@ public class Solution {
         }
 
         if (sol.size() > total) return;
-        for (int i = index; i <= 9; i++) {
+        for (int i = index; i <= 9 && sum - i >= 0; i++) {
             sol.add(i);
             combinationSum3Helper(i + 1, total, sum - i, sol, res);
             sol.remove(sol.size() - 1);

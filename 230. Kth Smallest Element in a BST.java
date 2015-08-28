@@ -19,10 +19,10 @@ public class Solution {
 }
 
 
-// Solution 2. In  order traverse
+// Solution 2. In order traverse
 public class Solution {
-    private static int number = 0;
-    private static int count = 0;
+    private int number = 0;
+    private int count = 0;
     public int kthSmallest(TreeNode root, int k) {
         count = k;
         helper(root);

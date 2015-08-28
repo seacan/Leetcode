@@ -16,14 +16,9 @@ public class WordDictionary {
     public void addWord(String word) {
         TrieNode cur = root;
         for (char c : word.toCharArray()) {
-            TrieNode next;
-            if (cur.children.containsKey(c)) {
-                next = cur.children.get(c);
-            } else {
-                next = new TrieNode();
-                cur.children.put(c, next);
-            }
-            cur = next;
+            if (!cur.children.containsKey(c))
+                cur.children.put(c, new TrieNode());
+            cur = cur.children.get(c);
         }
         cur.isWordEnd = true;
     }

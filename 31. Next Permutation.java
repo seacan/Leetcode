@@ -6,8 +6,7 @@ public class Solution {
         if (index != -1) {
             // find the smallest value greater then the value at cur position
             int minIndex = index + 1;
-            for (int i = index + 1; i < num.length && num[i] > num[index]; i++)
-                minIndex = i;            
+            for (; minIndex + 1 < num.length && num[minIndex + 1] > num[index]; minIndex++);            
             int temp = num[minIndex];
             num[minIndex] = num[index];
             num[index] = temp;
