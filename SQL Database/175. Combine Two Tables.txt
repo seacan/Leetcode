@@ -1,0 +1,24 @@
+Table: Person
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| PersonId    | int     |
+| FirstName   | varchar |
+| LastName    | varchar |
++-------------+---------+
+
+
+Table: Address
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| AddressId   | int     |
+| PersonId    | int     |
+| City        | varchar |
+| State       | varchar |
++-------------+---------+
+
+
+SELECT Person.FirstName, Person.LastName, Address.City, Address.State 
+from Person LEFT JOIN Address 
+on Person.PersonId = Address.PersonId;
