@@ -13,25 +13,24 @@ public class Solution {
         boolean[] visiting = new boolean[numCourses];
         List<Integer> res = new ArrayList<Integer>();
         for (int i = 0; i < numCourses; i++){
-            if (!visited[i] && !search(i, visited, visiting, graph, res))
+            if (!visited[i] && isCycleFound(i, visited, visiting, graph, res))
                 return new int[0];
         }
-
         int[] ret = new int[res.size()];
         for(int i = 0;i < ret.length;i++)
             ret[i] = res.get(i);
         return ret;
     }
     
-    private boolean search(int i,boolean[] visited,boolean[] visiting, HashSet<Integer>[] graph, List<Integer> res) {
-        if (visiting[i]) return false;
+    private boolean isCycleFound(int i,boolean[] visited,boolean[] visiting, HashSet<Integer>[] graph, List<Integer> res) {
+        if (visiting[i]) return true;
         visiting[i] = true;
         for (Integer j : graph[i])
-            if (!visited[j] && !search(j, visited, visiting, graph, res))
-                return false;
+            if (!visited[j] && isCycleFound(j, visited, visiting, graph, res))
+                return true;
         visiting[i] = false;
-        visited[i] = true;
+        visited[i] = true; 
         res.add(i);
-        return true;
+        return false;
     }
 }

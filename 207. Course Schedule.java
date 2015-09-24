@@ -7,19 +7,19 @@ public class Solution {
         boolean[] visited = new boolean[numCourses];
         boolean[] visiting = new boolean[numCourses];
         for (int i = 0; i < numCourses; i++)
-            if (!visited[i] && !search(i, visited, visiting, graph))
+            if (!visited[i] && isCycleFound(i, visited, visiting, graph))
                 return false;
         return true;
     }
 
-    private boolean search(int i,boolean[] visited,boolean[] visiting, HashSet<Integer>[] graph) {
-        if (visiting[i]) return false;
+    private boolean isCycleFound(int i,boolean[] visited,boolean[] visiting, HashSet<Integer>[] graph) {
+        if (visiting[i]) return true;
         visiting[i] = true;
         for (Integer j : graph[i])
-            if (!visited[j] && !search(j, visited, visiting, graph))
-                return false;
+            if (!visited[j] && isCycleFound(j, visited, visiting, graph))
+                return true;
         visiting[i] = false;
         visited[i] = true;
-        return true;
+        return false;
     }
 }
