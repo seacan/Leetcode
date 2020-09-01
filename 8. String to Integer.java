@@ -1,4 +1,5 @@
 public class Solution {
+    // Solution 1: reverse to long type
     public int myAtoi(String str) {
         if (str == null || str.length() == 0) return 0;
 
@@ -18,5 +19,20 @@ public class Solution {
     			return isPositive ? Integer.MAX_VALUE : Integer.MIN_VALUE;
     	}
     	return isPositive ? (int) val : (int) val * -1;
+    }
+
+    // Solution 2: no long cast
+    public int myAtoi(String str) {        
+        str = str.trim();
+        if (str == null || str.isEmpty()) return 0;
+        int sign = 1, base = 0, i = 0;
+        if (str.charAt(i) == '-' || str.charAt(i) == '+')
+            sign = str.charAt(i++) == '-' ? -1 : 1;   // don't forget i++
+        while (i < str.length() && str.charAt(i) >= '0' && str.charAt(i) <= '9') {
+            if (base > Integer.MAX_VALUE / 10 || (base == Integer.MAX_VALUE / 10 && str.charAt(i) > '7'))
+                return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            base = base * 10 + (str.charAt(i++) - '0');  // don't forget i++
+        }
+        return base * sign;
     }
 }

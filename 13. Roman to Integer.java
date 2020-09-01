@@ -1,24 +1,21 @@
 public class Solution {
-    public int romanToInt(String s) {        
-    	if (s == null || s.length() == 0) return 0;
-    
-    	HashMap<Character, Integer> map = new HashMap<Character, Integer>() {{
-    		put('M', 1000);
-    		put('D', 500);
-    		put('C', 100);
-    		put('L', 50);
-    		put('X', 10);
-    		put('V', 5);
-    		put('I', 1);
-    	}};
-    
-    	int res = 0, pre = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            int val = map.get(s.charAt(i));
-            res += val >= pre ? val : -val;
-            pre = val;
+    public int romanToInt(String s) {
+        int sum = 0;
+        if (s.indexOf("IV") != -1) sum -= 2;
+        if (s.indexOf("IX") != -1) sum -= 2;
+        if (s.indexOf("XL") != -1) sum -= 20;
+        if (s.indexOf("XC") != -1) sum -= 20;
+        if (s.indexOf("CD") != -1) sum -= 200;
+        if (s.indexOf("CM") != -1) sum -= 200;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'M') sum += 1000;
+            if (s.charAt(i) == 'D') sum += 500;
+            if (s.charAt(i) == 'C') sum += 100;
+            if (s.charAt(i) == 'L') sum += 50;
+            if (s.charAt(i) == 'X') sum += 10;
+            if (s.charAt(i) == 'V') sum += 5;
+            if (s.charAt(i) == 'I') sum += 1;
         }
-    
-    	return res;
+        return sum;
     }
 }

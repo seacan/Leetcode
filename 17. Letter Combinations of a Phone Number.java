@@ -1,4 +1,5 @@
 public class Solution {
+    // Solution 1: recursion
     private String[] mapping = new String[] {"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
     public List<String> letterCombinations(String digits) {
         List<String> res = new ArrayList<String>();
@@ -20,5 +21,21 @@ public class Solution {
             letterCombinationsHelper(digits, index + 1, sb, res);
             sb.deleteCharAt(sb.length() - 1);
         }
+    }
+
+    // Solution 2: without recursion
+    public List<String> letterCombinations(String digits) {
+        List<String> res = new LinkedList<String>();
+        if (digits.isEmpty()) return res;
+        String[] mapping = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        res.add("");
+        while (res.get(0).length() != digits.length()) {
+            String cur = res.remove(0);
+            String map = mapping[Character.getNumericValue(digits.charAt(cur.length()))];
+            for (char c : map.toCharArray()) {
+                res.add(res.size(), cur + c);
+            }
+        }
+        return res;
     }
 }

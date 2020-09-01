@@ -1,25 +1,23 @@
 public class Solution {
-    public List<List<Integer>> fourSum(int[] num, int target) {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        if (num.length < 4) return res;
+        if (nums.length < 4) return res;
 
-        Arrays.sort(num);
-        for (int i = 0; i < num.length - 3; i++) {
-            if (i > 0 && num[i - 1] == num[i]) continue;
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 3; i++) {
+            if (i > 0 && nums[i - 1] == nums[i]) continue;
             // j decreases to i+3
-            for (int j = num.length - 1; j >= i + 3; j--) {
-                if (j < num.length - 1 && num[j + 1] == num[j]) continue;
+            for (int j = nums.length - 1; j >= i + 3; j--) {
+                if (j < nums.length - 1 && nums[j + 1] == nums[j]) continue;
                 int l = i + 1, r = j - 1;
                 while (l < r) {
-                    int sum = num[i] + num[l] + num[r] + num[j];
+                    int sum = nums[i] + nums[l] + nums[r] + nums[j];
                     if (sum == target) {
-                        res.add(new ArrayList<Integer>(Arrays.asList(num[i], num[l], num[r], num[j])));
-                        do l++; while (l < r && num[l] == num[l - 1]);
-                        do r--; while (l < r && num[r] == num[r + 1]);
-                    } else if (sum > target)
-                        r--;
-                    else
-                        l++;
+                        res.add(new ArrayList<Integer>(Arrays.asList(nums[i], nums[l], nums[r], nums[j])));
+                        do l++; while (l < r && nums[l] == nums[l - 1]);
+                        do r--; while (l < r && nums[r] == nums[r + 1]);
+                    } else if (sum > target) r--;
+                    else l++;
                 }
             }
         }

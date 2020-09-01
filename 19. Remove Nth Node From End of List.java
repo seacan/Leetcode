@@ -1,22 +1,16 @@
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        // handle this special case
-        if (head == null||(head.next == null && n == 1)) return null;
-        ListNode front = head;
-        for (; n > 0; n--){
-            // valiad case: when front stops at last null position
-            if (front == null) return head;
-            front = front.next;
+        ListNode preHead = new ListNode(), fast = preHead, slow = preHead;
+        preHead.next = head;
+        for (int i = 0; i <= n; i++) {
+            if (fast == null) return head;
+            fast = fast.next;
         }
-
-        // hanle deleting head case
-        if (front == null) return head.next;
-        ListNode back = head;
-        while (front.next != null) {
-            front = front.next;
-            back = back.next;
+        while (fast != null) {
+            slow = slow.next;
+            fast = fast.next;
         }
-        back.next = back.next.next;
-        return head;
+        slow.next = slow.next.next;
+        return preHead.next;
     }
 }
