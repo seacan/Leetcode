@@ -15,16 +15,12 @@ public class Solution {
         }
 
         for (int i = 0; i < num.length; i++) {
-            if (used[i]) continue;
-            // if index is 0, or current num is different as previous position
-            // or previous one is not used (postion greater than 0, and current num is same as previous one)
-            if (i == 0 || num[i - 1] != num[i] || !used[i - 1]) {
-                used[i] = true;
-                sol.add(num[i]);
-                permuteUniqueHelper(num, used, sol, res);
-                sol.remove(sol.size() - 1);
-                used[i] = false;
-            }
+            if (used[i] || i > 0 && num[i] == num[i - 1] && !used[i - 1]) continue;
+            used[i] = true;
+            sol.add(num[i]);
+            permuteUniqueHelper(num, used, sol, res);
+            sol.remove(sol.size() - 1);
+            used[i] = false;
         }
     }
 }

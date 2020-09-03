@@ -4,7 +4,7 @@ public class Solution {
         if (L == null || L.length == 0 || L[0].isEmpty() || L[0].length() == 0) return res;
 
         HashMap<String, Integer> count = new HashMap<String, Integer>();
-        for (String str : L) count.put(str, count.containsKey(str) ? count.get(str) + 1 : 1);
+        for (String str : L) count.put(str, count.getOrDefault(str, 0) + 1);
 
         int size = L[0].length();
         for (int i = 0; i < S.length() - L.length * size + 1; i++) {

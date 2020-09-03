@@ -1,12 +1,12 @@
-public class Solution {
-    public List<String[]> solveNQueens(int n) {
-        List<String[]> res = new ArrayList<String[]>();
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        List<List<String>> res = new ArrayList<>();
         int[] sol = new int[n];
         solveNQueensHelper(0, n, sol, res);
         return res;
     }
 
-    private void solveNQueensHelper(int index, int n, int[] sol, List<String[]> res) {
+    private void solveNQueensHelper(int index, int n, int[] sol, List<List<String>> res) {
         if (index == n) {
             res.add(PrintSolution(sol));
             return;
@@ -27,16 +27,16 @@ public class Solution {
         }
         return true;
     }
-    
-    private String[] PrintSolution(int[] sol){
-        String[] printSol = new String[sol.length];
-        for(int i=0;i<sol.length;i++) {
+
+    private List<String> PrintSolution(int[] sol) {
+        List<String> printSol = new ArrayList<>();
+        for (int i = 0; i < sol.length; i++) {
             StringBuilder sb = new StringBuilder();
             for (int j = 0; j < sol.length; j++) {
-                if(j==sol[i]) sb.append('Q');
+                if (j == sol[i]) sb.append('Q');
                 else sb.append('.');
             }
-            printSol[i] = sb.toString();
+            printSol.add(sb.toString());
         }
         return printSol;
     }
