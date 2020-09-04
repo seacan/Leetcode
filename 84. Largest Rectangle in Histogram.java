@@ -1,18 +1,18 @@
 public class Solution {
-    public int largestRectangleArea(int[] height) {
-        if (height == null || height.length == 0) return 0;
-        int max = 0;
-        Stack<Integer> st = new Stack<Integer>();
-        st.push(-1);
-        for (int i = 0; i < height.length; i++) {
-            while (st.peek() != -1 && height[i] < height[st.peek()])
-                    max = Math.max(max, height[st.pop()] * (i - st.peek() - 1));
-            st.push(i);
+    public int largestRectangleArea(int[] heights) {
+        int len = heights.length;
+        Stack<Integer> s = new Stack<>();
+        int maxArea = 0;
+        for (int i = 0; i <= len; i++){
+            int h = (i == len ? 0 : heights[i]);
+            if (s.isEmpty() || h >= heights[s.peek()]) {
+                s.push(i);
+            } else {
+                int tp = s.pop();
+                maxArea = Math.max(maxArea, heights[tp] * (s.isEmpty() ? i : i - 1 - s.peek()));
+                i--;
+            }
         }
-
-        while (st.peek() != -1)
-            max = Math.max(max, height[st.pop()] * (height.length - 1 - st.peek()));
-
-        return max;
+        return maxArea;
     }
 }
