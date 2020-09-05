@@ -6,6 +6,7 @@
  *     RandomListNode(int x) { this.label = x; }
  * };
  */
+// Solution 1: create the node copy next to each one
 public class Solution {
     public RandomListNode copyRandomList(RandomListNode head) {
         if (head == null) return null;
@@ -31,4 +32,26 @@ public class Solution {
 
         return newHead;
     }
+}
+
+// Solution 2: easy to read with Map
+class Solution {
+    public Node copyRandomList(Node head) {
+        if (head == null) return null;
+        Map<Node, Node> map = new HashMap<Node, Node>();
+        Node node = head;
+        while (node != null) {
+            map.put(node, new Node(node.val));
+            node = node.next;
+        }
+
+        node = head;
+        while (node != null) {
+            map.get(node).next = map.get(node.next);
+            map.get(node).random = map.get(node.random);
+            node = node.next;
+        }
+
+        return map.get(head);
+    }   
 }

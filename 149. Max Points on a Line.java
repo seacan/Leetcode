@@ -1,14 +1,5 @@
-/**
- * Definition for a point.
- * class Point {
- *     int x;
- *     int y;
- *     Point() { x = 0; y = 0; }
- *     Point(int a, int b) { x = a; y = b; }
- * }
- */
-public class Solution {
-    public int maxPoints(Point[] points) {
+class Solution {
+    public int maxPoints(int[][] points) {
         if (points == null || points.length == 0) return 0;
         int max = 0;
         for (int i = 0; i < points.length - max; i++) {
@@ -16,15 +7,15 @@ public class Solution {
             HashMap<Double, Integer> map = new HashMap<Double, Integer>();
             for (int j = i + 1; j < points.length; j++) {
                 Double slope;
-                if (points[i].x == points[j].x && points[i].y == points[j].y) {
+                if (points[i][0] == points[j][0] && points[i][1] == points[j][1]) {
                     samePoint++;
                     continue;
-                } else if (points[i].x == points[j].x)
+                } else if (points[i][0] == points[j][0])
                     slope = Double.MAX_VALUE;
-                else if (points[i].y == points[j].y)
+                else if (points[i][1] == points[j][1])
                     slope = 0.0;
                 else
-                    slope = (double) (points[i].y - points[j].y) / (double) (points[i].x - points[j].x);
+                    slope = (double) (points[i][1] - points[j][1]) / (double) (points[i][0] - points[j][0]);
                 map.put(slope, map.containsKey(slope) ? map.get(slope) + 1 : 1);
             }
             max = Math.max(max, 1 + samePoint + getMaxValue(map));

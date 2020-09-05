@@ -1,4 +1,4 @@
-// solution 1: DP
+// solution 1: one string DP
 public class Solution {
     public int numDistinct(String S, String T) {
         if (T.length() > S.length()) return 0;
@@ -12,9 +12,24 @@ public class Solution {
     }
 }
 
+// Solution 2: two strings DP
+public class Solution {
+    public int numDistinct(String S, String T) {
+        int[][] mem = new int[T.length() + 1][S.length() + 1];
+        for (int j = 0; j <= S.length(); j++) mem[0][j] = 1;
+        for (int i = 0; i < T.length(); i++)
+            for (int j = 0; j < S.length(); j++) {
+                if (T.charAt(i) == S.charAt(j))
+                    mem[i + 1][j + 1] = mem[i][j] + mem[i + 1][j];
+                else
+                    mem[i + 1][j + 1] = mem[i + 1][j];
+            }
 
+        return mem[T.length()][S.length()];
+    }
+}
 
-// solution 2: indexes
+// solution 3: indexes
 public int numDistinct(String S, String T) {
         HashMap<Character, List<Integer>> map = new HashMap<Character, List<Integer>>();
         for (int i = 0; i < S.length(); i++) {

@@ -1,31 +1,32 @@
 public class Solution {
-    public void connect(TreeLinkNode root) {
-        if (root == null) return;
-        root.next = null;
-        while (root != null) {
-            TreeLinkNode first = null, last = null;
-            for (TreeLinkNode runner = root; runner != null; runner = runner.next) {
-                if (runner.left != null) {
+    public Node connect(Node root) {
+        if (root == null) return null;
+        Node levelRunner = root;
+        while (levelRunner != null) {
+            Node first = null, last = null;
+            for (Node rowRunner = levelRunner; rowRunner != null; rowRunner = rowRunner.next) {
+                if (rowRunner.left != null) {
                     if (first == null) {
-                        first = runner.left;
-                        last = runner.left;
+                        first = rowRunner.left;
+                        last = rowRunner.left;
                     } else {
-                        last.next = runner.left;
-                        last = runner.left;
+                        last.next = rowRunner.left;
+                        last = rowRunner.left;
                     }
                 }
 
-                if (runner.right != null) {
+                if (rowRunner.right != null) {
                     if (first == null) {
-                        first = runner.right;
-                        last = runner.right;
+                        first = rowRunner.right;
+                        last = rowRunner.right;
                     } else {
-                        last.next = runner.right;
-                        last = runner.right;
+                        last.next = rowRunner.right;
+                        last = rowRunner.right;
                     }
                 }
             }
-            root = first;
+            levelRunner = first;
         }
+        return root;
     }
 }

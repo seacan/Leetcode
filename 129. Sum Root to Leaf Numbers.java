@@ -4,6 +4,7 @@ public class Solution {
         return sumNumbersHelper(root, 0);
     }
 
+    // Top down recursion
     private int sumNumbersHelper(TreeNode root, int sum) {
         if (root.left == null && root.right == null) return sum * 10 + root.val;
         int total = 0;

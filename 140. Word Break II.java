@@ -1,3 +1,4 @@
+// Solution 1: DFS on string prefix check
 public class Solution {
     private List<String> res = new ArrayList<String>();
     public List<String> wordBreak(String s, Set<String> dict) {
@@ -31,5 +32,31 @@ public class Solution {
         for (int i = str.length() - 1; i >= index; i--)
             if (dict.contains(str.substring(i, str.length()))) return true;
         return false;
+    }
+}
+
+// Solution 2: DFS on dictionary check
+class Solution {    
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
+    }
+
+    List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>> map) {
+        if (map.containsKey(s)) return map.get(s);
+
+        LinkedList<String> res = new LinkedList<String>();
+        if (s.length() == 0) {
+            res.add("");
+            return res;
+        }
+        for (String word : wordDict) {
+            if (s.startsWith(word)) {
+                List<String> sublist = DFS(s.substring(word.length()), wordDict, map);
+                for (String sub : sublist)
+                    res.add(word + (sub.isEmpty() ? "" : " ") + sub);
+            }
+        }
+        map.put(s, res);
+        return res;
     }
 }
