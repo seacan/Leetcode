@@ -20,6 +20,7 @@ public class Solution {
         return count;
     }
 
+    // Solution 1: recursive stack
     private void searchIsland(char[][] grid, int row, int col) {
         int[] x = new int[]{1, -1, 0, 0};
         int[] y = new int[]{0, 0, 1, -1};
@@ -34,5 +35,15 @@ public class Solution {
                     st.push(new Pair(newRow, newCol));
             }
         }
+    }
+
+    // Solution 2: recursive function
+    private void searchIsland(char[][] grid, int i, int j) {
+        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] != '1') return;
+        grid[i][j] = '0';
+        searchIsland(grid, i + 1, j);
+        searchIsland(grid, i - 1, j);
+        searchIsland(grid, i, j + 1);
+        searchIsland(grid, i, j - 1);
     }
 }

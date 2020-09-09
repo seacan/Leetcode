@@ -1,25 +1,29 @@
-public class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        if (prerequisites == null || prerequisites.length == 0) return true;
-        HashSet<Integer>[] graph = new HashSet[numCourses];
-        for (int i = 0; i < numCourses; i++) graph[i] = new HashSet<Integer>();
-        for (int i = 0; i < prerequisites.length; i++) graph[prerequisites[i][0]].add(prerequisites[i][1]);
-        boolean[] visited = new boolean[numCourses];
-        boolean[] visiting = new boolean[numCourses];
-        for (int i = 0; i < numCourses; i++)
-            if (!visited[i] && isCycleFound(i, visited, visiting, graph))
-                return false;
-        return true;
+public boolean canFinish(int numCourses, int[][] prerequisites) {
+    Map<Integer, Integer> inDegree = new HashMap<>();
+    Map<Integer, List<Integer>> map = new HashMap<>();
+    for (int i = 0; i < numCourses; i++) {
+        inDegree.put(i, 0);
+        map.put(i, new ArrayList<>());
+    }
+    for (int[] prerequisite : prerequisites) {
+        inDegree.put(prerequisite[0], inDegree.get(prerequisite[0]) + 1);
+        map.get(prerequisite[1]).add(prerequisite[0]);
     }
 
-    private boolean isCycleFound(int i,boolean[] visited,boolean[] visiting, HashSet<Integer>[] graph) {
-        if (visiting[i]) return true;
-        visiting[i] = true;
-        for (Integer j : graph[i])
-            if (!visited[j] && isCycleFound(j, visited, visiting, graph))
-                return true;
-        visiting[i] = false;
-        visited[i] = true;
-        return false;
+    Queue<Integer> queue = new LinkedList<>();
+    for (Map.Entry<Integer, Integer> entry : inDegree.entrySet())
+        if (entry.getValue() == 0)
+            queue.add(entry.getKey());
+
+    int count = 0;
+    while (!queue.isEmpty()) {
+        int cur = queue.poll();
+        count++;
+        for (int neighbor : map.get(cur)) {
+            inDegree.put(neighbor, inDegree.get(neighbor) - 1);
+            if (inDegree.get(neighbor) == 0)
+                queue.add(neighbor);
+        }
     }
+    return count == numCourses;
 }

@@ -1,36 +1,33 @@
-public class Solution {
+class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        if (prerequisites == null || prerequisites.length == 0){
-            int[] ret = new int[numCourses];
-            for(int i=0;i<numCourses;i++) ret[i] = i;
-            return ret;
-        };
-        
-        HashSet<Integer>[] graph = new HashSet[numCourses];
-        for (int i = 0; i < numCourses; i++) graph[i] = new HashSet<Integer>();
-        for (int i = 0; i < prerequisites.length; i++) graph[prerequisites[i][0]].add(prerequisites[i][1]);
-        boolean[] visited = new boolean[numCourses];
-        boolean[] visiting = new boolean[numCourses];
-        List<Integer> res = new ArrayList<Integer>();
-        for (int i = 0; i < numCourses; i++){
-            if (!visited[i] && isCycleFound(i, visited, visiting, graph, res))
-                return new int[0];
+        if (numCourses <= 0) return new int[numCourses];
+
+        Map<Integer, Integer> inDegree = new HashMap<>();
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for (int i = 0; i < numCourses; i++) {
+            inDegree.put(i, 0);
+            map.put(i, new ArrayList<>());
         }
-        int[] ret = new int[res.size()];
-        for(int i = 0;i < ret.length;i++)
-            ret[i] = res.get(i);
-        return ret;
-    }
-    
-    private boolean isCycleFound(int i,boolean[] visited,boolean[] visiting, HashSet<Integer>[] graph, List<Integer> res) {
-        if (visiting[i]) return true;
-        visiting[i] = true;
-        for (Integer j : graph[i])
-            if (!visited[j] && isCycleFound(j, visited, visiting, graph, res))
-                return true;
-        visiting[i] = false;
-        visited[i] = true; 
-        res.add(i);
-        return false;
+        for (int[] prerequisite : prerequisites) {
+            inDegree.put(prerequisite[0], inDegree.get(prerequisite[0]) + 1);
+            map.get(prerequisite[1]).add(prerequisite[0]);
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (Map.Entry<Integer, Integer> entry : inDegree.entrySet())
+            if (entry.getValue() == 0)
+                queue.add(entry.getKey());
+
+        List<Integer> res = new ArrayList<>();
+        while (!queue.isEmpty()) {
+            int cur = queue.poll();
+            res.add(cur);
+            for (int neighbor : map.get(cur)) {
+                inDegree.put(neighbor, inDegree.get(neighbor) - 1);
+                if (inDegree.get(neighbor) == 0)
+                    queue.add(neighbor);
+            }
+        }
+        return res.size() == numCourses ? res.stream().mapToInt(i -> i).toArray() : new int[0];
     }
 }
