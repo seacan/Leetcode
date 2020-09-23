@@ -5,6 +5,6 @@ public class Solution {
             reach = Math.max(reach, A[i] + i);
             if (reach >= A.length - 1) return true;
         }
-        return reach >= A.length - 1;
+        return false;
     }
 }

@@ -33,7 +33,7 @@ public class Solution {
             String cur = res.remove(0);
             String map = mapping[Character.getNumericValue(digits.charAt(cur.length()))];
             for (char c : map.toCharArray()) {
-                res.add(res.size(), cur + c);
+                res.add(cur + c);
             }
         }
         return res;

@@ -23,7 +23,10 @@ public class Solution {
     			return true;
     	return false;
     }
+}
 
+
+public class Solution {
     // Solution 2: DP with memory solution
     public boolean isMatch(String s, String p) {
         if (s == null || p == null) return false;

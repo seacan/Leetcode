@@ -21,7 +21,6 @@ public class Solution {
 }
 
 
-
 // Solution 2: resursive on available count for left and right parenthesis
 public class Solution {
     public List<String> generateParenthesis(int n) {
@@ -47,5 +46,26 @@ public class Solution {
             generateParenthesisHelper(left, right - 1, sb, res);
             sb.deleteCharAt(sb.length() - 1);
         }
+    }
+}
+
+
+// Solution 3: DFS
+public class Solution {
+    public static List<String> generateValidParentheses(int num) {
+        List<String> res = new ArrayList<>();
+        Queue<ParenthesesString> queue = new LinkedList<>();
+        queue.offer(new ParenthesesString("", 0, 0));
+        while (!queue.isEmpty()) {
+            ParenthesesString cur = queue.poll();
+            if (cur.openCount == num && cur.closeCount == num) res.add(cur.str);
+            else {
+                if (cur.openCount < num)
+                    queue.add(new ParenthesesString(cur.str + "(", cur.openCount + 1, cur.closeCount));
+                if (cur.openCount > cur.closeCount)
+                    queue.add(new ParenthesesString(cur.str + ")", cur.openCount, cur.closeCount + 1));
+            }
+        }
+        return res;
     }
 }

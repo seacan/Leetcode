@@ -15,7 +15,7 @@ public class Solution {
         }
 
         for (int i = 0; i < num.length; i++) {
-            if (used[i] || i > 0 && num[i] == num[i - 1] && !used[i - 1]) continue;
+            if (used[i] || i > 0 && num[i] == num[i - 1] && used[i - 1]) continue;
             used[i] = true;
             sol.add(num[i]);
             permuteUniqueHelper(num, used, sol, res);
