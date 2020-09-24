@@ -26,6 +26,7 @@ public class Solution {
                 TreeNode temp = left;
                 while (temp.right != null)
                     temp = temp.right;
+                // move left branch to right side, then chain right branch after
                 temp.right = right;
                 node.right = left;
                 node.left = null;
