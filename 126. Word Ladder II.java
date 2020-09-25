@@ -1,7 +1,18 @@
-public class Solution {
+class Tracker {
+    String str;
+    List<String> sol;
+
+    public Tracker(String str) {
+        this.str = str;
+        sol = new ArrayList<>();
+        sol.add(str);
+    }
+}
+
+class Solution {
     private List<List<String>> res = new ArrayList<List<String>>();
-    private HashMap<String, List<String>> map = new HashMap<String, List<String>>();
-    public List<List<String>> findLadders(String start, String end, Set<String> dict) {
+
+    public List<List<String>> findLadders(String start, String end, List<String> dict) {
         if (dict.size() == 0) return res;
 
         int min = Integer.MAX_VALUE;
@@ -9,50 +20,34 @@ public class Solution {
         for (String s : dict) ladder.put(s, Integer.MAX_VALUE);
         ladder.put(start, 0);
 
-        Queue<String> queue = new LinkedList<String>();
-        queue.add(start);
+        Queue<Tracker> queue = new LinkedList<>();
+        queue.add(new Tracker(start));
         while (!queue.isEmpty()) {
-            String cur = queue.poll();
-            int step = ladder.get(cur) + 1;
+            Tracker cur = queue.poll();
+            int step = ladder.get(cur.str) + 1;
             if (step > min) break;
 
-            for (int i = 0; i < cur.length(); i++)
+            for (int i = 0; i < cur.str.length(); i++)
                 for (char c = 'a'; c <= 'z'; c++) {
-                    String newString = cur.substring(0, i) + c + cur.substring(i + 1);
+                    String newString = cur.str.substring(0, i) + c + cur.str.substring(i + 1);
                     if (ladder.containsKey(newString)) {
                         if (step > ladder.get(newString)) continue;
-                        if (step < ladder.get(newString)) {
-                            // enqueue and update step
-                            queue.add(newString);
+                        if (step <= ladder.get(newString)) {
+                            Tracker newTracker = new Tracker(newString);
+                            newTracker.sol = new ArrayList<>(cur.sol);
+                            newTracker.sol.add(newString);
+                            queue.add(newTracker);
                             ladder.put(newString, step);
                         }
 
-                        if (newString.equals(end)) min = step;
-                        
-                        // update back trace mapping
-                        if (map.containsKey(newString))
-                            map.get(newString).add(cur);
-                        else
-                            map.put(newString, new ArrayList<String>(Arrays.asList(cur)));
+                        if (newString.equals(end)) {
+                            min = step;
+                            cur.sol.add(end);
+                            res.add(cur.sol);
+                        }
                     }
                 }
         }
-        backTrace(end, start, new ArrayList<String>());
         return res;
-    }
-
-    private void backTrace(String end, String start, List<String> sol) {
-        if (end.equals(start)) {
-            List<String> copy = new ArrayList<String>(sol);
-            copy.add(0, start);
-            res.add(copy);
-            return;
-        }
-
-        sol.add(0, end);
-        if (map.containsKey(end))
-            for (String s : map.get(end))
-                backTrace(s, start, sol);
-        sol.remove(0);
     }
 }
