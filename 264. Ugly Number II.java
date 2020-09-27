@@ -1,3 +1,4 @@
+// Write a program to find the n-th ugly number.
 public class Solution {
     public int nthUglyNumber(int n) {
         int[] res = new int[n];

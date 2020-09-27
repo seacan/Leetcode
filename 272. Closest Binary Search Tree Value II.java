@@ -20,7 +20,7 @@ public class Solution {
     }
 }
 
-// Solution 1: iteration
+// Solution 2: iteration
 public class Solution {
     List<Integer> closestKValues(TreeNode root, double target, int k) {
         List<Integer> res = new ArrayList<>();

@@ -9,6 +9,7 @@ public class Solution {
         for (String str : strs) {
             StringBuilder key = new StringBuilder();
             for (char c : str.toCharArray())
+                // encoding the key
                 key.append(((c + 26 - str.charAt(0)) % 26) + ",");
             if (!map.containsKey(key))
                 map.put(key.toString(), new ArrayList<>());

@@ -1,3 +1,4 @@
+//The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.
 public class Solution {
     bool knows(int a, int b);
     int findCelebrity(int n) {
