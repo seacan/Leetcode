@@ -21,6 +21,6 @@ class Solution {
         if (visited.contains(i)) return;
         visited.add(i);
         for (int j = 0; j < map.get(i).size(); j++)
-            dfs(map, visited, map.get(i).get(j);
+            dfs(map, visited, map.get(i).get(j));
     }
 }

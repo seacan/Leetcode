@@ -10,9 +10,9 @@ class Solution {
                 // In the beginning, every 2nd bit is 0;
                 // So we only need to care about when will the 2nd bit become 1.
                 if (board[i][j] == 1 && lives >= 2 && lives <= 3)
-                    board[i][j] = 3; // Make the 2nd bit 1: 01 ---> 11                
+                    board[i][j] = 3; // Make the 2nd bit 1: 01 ---> 11 ---> 1
                 if (board[i][j] == 0 && lives == 3)
-                    board[i][j] = 2; // Make the 2nd bit 1: 00 ---> 10                
+                    board[i][j] = 2; // Make the 2nd bit 1: 00 ---> 10 ---> 1
             }
         }
 
@@ -25,6 +25,7 @@ class Solution {
         int lives = 0;
         for (int x = Math.max(i - 1, 0); x <= Math.min(i + 1, m - 1); x++)
             for (int y = Math.max(j - 1, 0); y <= Math.min(j + 1, n - 1); y++)
+                // Count with the most right bit
                 lives += board[x][y] & 1;            
         lives -= board[i][j] & 1;
         return lives;

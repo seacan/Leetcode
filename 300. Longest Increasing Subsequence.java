@@ -1,8 +1,9 @@
 class Solution {
-    public static int lengthOfLIS(int[] nums) {
+    public int lengthOfLIS(int[] nums) {
         int[] tails = new int[nums.length];
         int size = 0;
         for (int x : nums) {
+            // insert each x to tails with binary search
             int i = 0, j = size;
             while (i != j) {
                 int m = (i + j) / 2;

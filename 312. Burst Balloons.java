@@ -1,10 +1,13 @@
+// Input: [3,1,5,8]
+// Output: 167 
+// Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []
+//              coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167
 class Solution {
     public int maxCoins(int[] iNums) {
         int[] nums = new int[iNums.length + 2];
         int n = 1;
         for (int x : iNums) if (x > 0) nums[n++] = x;
         nums[0] = nums[n++] = 1;
-
 
         int[][] memo = new int[n][n];
         return burst(memo, nums, 0, n - 1);

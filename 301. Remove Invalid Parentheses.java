@@ -7,7 +7,7 @@ class Solution {
         queue.offer(s);
         visited.add(s);
         boolean found = false;
-        while (!queue.isEmpty() && !found) {
+        while (!queue.isEmpty()) {
             int size = queue.size();
             for (int j = 0; j < size; j++) {
                 String cur = queue.poll();

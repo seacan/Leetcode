@@ -69,7 +69,7 @@ class NumArray {
             } else if (start >= mid+1) {
                 return sumRange(root.right, start, end);
             }  else {    
-                return sumRange(root.right, mid+1, end) + sumRange(root.left, start, mid);
+                return sumRange(root.left, start, mid) + sumRange(root.right, mid+1, end);
             }
         }
     }

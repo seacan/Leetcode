@@ -4,7 +4,9 @@ class Solution {
         int[] copy = Arrays.copyOf(nums, n);
         Arrays.sort(copy);
 
+        // for first half (m-1..0), place on 0,2,..
         for (int i = m - 1, j = 0; i >= 0; i--, j += 2) nums[j] = copy[i];
+        // for second half (n-1..m), place on 1,3,..
         for (int i = n - 1, j = 1; i >= m; i--, j += 2) nums[j] = copy[i];
     }
 }

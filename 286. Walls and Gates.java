@@ -21,7 +21,7 @@ class Solution {
     }
 }
 
-// Solution 1: iteration
+// Solution 2: iteration
 class Pair {
     int x, y;
 

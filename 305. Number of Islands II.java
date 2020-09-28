@@ -1,3 +1,4 @@
+// Count the number of islands after each  addLand  operation.
 class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         int[] lands = new int[m * n];
@@ -25,9 +26,9 @@ class Solution {
         return result;
     }
 
-    private void union(int[] lands, int pId, int qId) {
+    private void union(int[] lands, int nId, int pId) {
         for (int i = 0; i < lands.length; i++) {
-            if (lands[i] == qId) lands[i] = pId;
+            if (lands[i] == nId) lands[i] = pId;
         }
     }
 }

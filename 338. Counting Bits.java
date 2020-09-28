@@ -1,3 +1,5 @@
+// Input: 5
+// Output: [0,1,1,2,1,2]
 class Solution {
     public int[] countBits(int num) {
         int[] f = new int[num + 1];
