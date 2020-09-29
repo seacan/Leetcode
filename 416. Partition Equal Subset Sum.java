@@ -1,3 +1,6 @@
+// Input: [1, 5, 11, 5]
+// Output: true
+// Explanation: The array can be partitioned as [1, 5, 5] and [11].
 class Solution {
     public boolean canPartition(int[] nums) {
         int sum = 0;

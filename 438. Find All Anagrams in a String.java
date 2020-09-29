@@ -1,3 +1,5 @@
+// Input: s: "cbaebabacd" p: "abc"
+// Output: [0, 6]
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
         List<Integer> list = new ArrayList<>();

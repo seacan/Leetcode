@@ -1,3 +1,5 @@
+// Input: s = "3[a2[c]]"
+// Output: "accaccacc
 class Solution {
     public String decodeString(String s) {
         Stack<Integer> intStack = new Stack<>();

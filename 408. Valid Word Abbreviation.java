@@ -1,3 +1,5 @@
+// Given s = "internationalization", abbr = "i12iz4n"
+// Return true
 class Solution {
     public boolean validWordAbbreviation(String word, String abbr) {
         int m = word.length(), n = abbr.length(), p = 0, cnt = 0;

@@ -4,7 +4,7 @@ class Solution {
         
         HashMap<Integer, HashSet<Integer>> map = new HashMap<>(stones.length);
         for (int i = 0; i < stones.length; i++)
-        	map.put(stones[i], new HashSet<Integer>() );
+        	map.put(stones[i], new HashSet<Integer>());
         map.get(0).add(1);
         
         for (int i = 0; i < stones.length - 1; i++) {
@@ -14,6 +14,7 @@ class Solution {
         		if (reach == stones[stones.length - 1])
         			return true;        		
         		HashSet<Integer> set = map.get(reach);
+                        // ignore non existing steps
         		if (set != null) {
         		    set.add(step);
         		    if (step - 1 > 0) set.add(step - 1);

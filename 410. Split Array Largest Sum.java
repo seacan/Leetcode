@@ -1,3 +1,5 @@
+// Input: nums = [1,2,3,4,5], m = 2
+// Output: 9, [4,5] leads to the minimized largest sum.
 class Solution {
     public int splitArray(int[] nums, int m) {
         int max = 0; long sum = 0;

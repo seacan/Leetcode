@@ -1,3 +1,5 @@
+// Input: equations = [["a","b"],["b","c"]], values = [2.0,3.0], queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
+// Output: [6.00000,0.50000,-1.00000,1.00000,-1.00000]
 class Solution {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
         HashMap<String, ArrayList<String>> pairs = new HashMap<String, ArrayList<String>>();
@@ -27,20 +29,18 @@ class Solution {
         return result;
     }
 
-    private double dfs(String start, String end, HashMap<String, ArrayList<String>> pairs, HashMap<String, ArrayList<Double>> values, HashSet<String> set, double value) {
-        if (set.contains(start)) return 0.0;
+    private double dfs(String start, String end, HashMap<String, ArrayList<String>> pairs, HashMap<String, ArrayList<Double>> values, HashSet<String> visited, double value) {
+        if (visited.contains(start)) return 0.0;
         if (!pairs.containsKey(start)) return 0.0;
         if (start.equals(end)) return value;
-        set.add(start);
+        visited.add(start);
 
         double tmp = 0.0;
         for (int i = 0; i < pairs.get(start).size(); i++) {
-            tmp = dfs(pairs.get(start).get(i), end, pairs, values, set, value * values.get(start).get(i));
-            if (tmp != 0.0) {
-                break;
-            }
+            tmp = dfs(pairs.get(start).get(i), end, pairs, values, visited, value * values.get(start).get(i));
+            if (tmp != 0.0) break;            
         }
-        set.remove(start);
+        visited.remove(start);
         return tmp;
     }
 }

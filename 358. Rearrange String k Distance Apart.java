@@ -19,7 +19,6 @@ class Main {
         for (Map.Entry e : map.entrySet()) queue.offer(new Pair(e.getValue(), e.getKey()));
         while (!queue.isEmpty()) {
             Queue<Pair> local = new PriorityQueue<>();
-            vector<pair<int, int>> v;
             int cnt = Math.min(k, len);
             for (int i = 0; i < cnt; ++i) {
                 if (queue.isEmpty()) return "";
