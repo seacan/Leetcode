@@ -1,3 +1,6 @@
+// Input:flights = [[0,1,1],[1,0,1],[1,1,0]], days = [[1,3,1],[6,0,3],[3,3,3]]
+// Output: 12
+// Explanation: Ans = 6 + 3 + 3 = 12.   
 class Solution {
     public int maxVacationDays(int[][] flights, int[][] days) {
         int n = flights.length, k = days[0].length;

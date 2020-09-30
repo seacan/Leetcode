@@ -1,3 +1,10 @@
+// Input: "4(2(3)(1))(6(5))"
+// Output: return the tree root node representing the following tree:
+//        4
+//      /   \
+//     2     6
+//    / \   / 
+//   3   1 5   
 class Solution {
     public TreeNode str2tree(String s) {
         if (s.isEmpty()) return null;

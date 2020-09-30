@@ -1,3 +1,6 @@
+// Input: IP = "172.16.254.1" Output: "IPv4"
+// Input: IP = "2001:0db8:85a3:0:0:8A2E:0370:7334" Output: "IPv6"
+// Input: IP = "256.256.256.256" Output: "Neither"
 class Solution {
     public String validIPAddress(String IP) {
         String[] ipv4 = IP.split("\\.", -1);

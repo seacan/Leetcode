@@ -1,3 +1,6 @@
+// Input: s1 = "ab" s2 = "eidbaooo"
+// Output: True
+// Explanation: s2 contains one permutation of s1 ("ba").
 class Solution {
     public boolean checkInclusion(String s1, String s2) {
         int len1 = s1.length(), len2 = s2.length();

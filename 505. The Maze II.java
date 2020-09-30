@@ -1,3 +1,4 @@
+// Count the steps.
 class Solution {
     int[][] dirs = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
@@ -22,6 +23,7 @@ class Solution {
                 --dist;
                 if (dists[x][y] > dist) {
                     dists[x][y] = dist;
+                    // no enqueue when hitting destination
                     if (x != destination[0] || y != destination[1]) q.offer(new int[]{x, y});
                 }
             }

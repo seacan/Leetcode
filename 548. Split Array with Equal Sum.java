@@ -1,3 +1,11 @@
+// **Input:** [1,2,1,2,1,2,1]
+// **Output:** True
+// **Explanation:**
+// i = 1, j = 3, k = 5. 
+// sum(0, i - 1) = sum(0, 0) = 1
+// sum(i + 1, j - 1) = sum(2, 2) = 1
+// sum(j + 1, k - 1) = sum(4, 4) = 1
+// sum(k + 1, n - 1) = sum(6, 6) = 1
 class Solution {
     public boolean splitArray(int[] nums) {
         if (nums.length < 7) return false;

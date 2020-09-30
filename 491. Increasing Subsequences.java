@@ -1,3 +1,5 @@
+// Input: [4, 6, 7, 7]
+// Output: [[4, 6], [4, 7], [4, 6, 7], [4, 6, 7, 7], [6, 7], [6, 7, 7], [7,7], [4,7,7]]
 class Solution {
     public List<List<Integer>> findSubsequences(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();

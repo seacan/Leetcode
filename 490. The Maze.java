@@ -23,4 +23,28 @@ class Solution {
         }
         return res;
     }
+
+    // Iterative solution.
+    boolean hasPath(int[][] maze, int[] start, int[] destination) {
+        int m = maze.length, n = maze[0].length;
+        Queue<int[]> q = new PriorityQueue<>();
+        q.offer(new int[]{start[0], start[1]});
+        maze[start[0]][start[1]] = -1;
+        while (!q.isEmpty()) {
+            int[] cur = q.poll();
+            if (cur[0] == destination[0] && cur[1] == destination[1])
+                return true;
+            for (int[] d : dirs) {
+                int x = cur[0], y = cur[1];
+                while (x >= 0 && x < m && y >= 0 && y < n && maze[x][y] == 0) {
+                    x += d[0];
+                    y += d[1];
+                }
+                x -= d[0];
+                y -= d[1];
+                if (maze[x][y] != -1) q.offer(new int[]{x, y});
+            }
+        }
+        return false;
+    }
 }

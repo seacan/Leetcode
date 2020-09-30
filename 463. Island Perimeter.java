@@ -1,3 +1,5 @@
+// Input: grid = [[1]]
+// Output: 4
 class Solution {
     public int islandPerimeter(int[][] grid) {
         int islands = 0, neighbours = 0;
