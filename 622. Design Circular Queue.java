@@ -1,7 +1,7 @@
 class MyCircularQueue {
     
     private final int[] a;
-    private int front, rear = -1, len = 0;
+    private int front = 0, rear = -1, len = 0;
 
     /** Initialize your data structure here. Set the size of the queue to be k. */
     public MyCircularQueue(int k) {

@@ -1,3 +1,6 @@
+// Input: "abca"
+// Output: True
+// Explanation: You could delete the character 'c'.
 class Solution {
     public boolean validPalindrome(String s) {
         int l = -1, r = s.length();

@@ -1,3 +1,8 @@
+// Input: 11011
+          10000
+          00001
+          11011
+// Output: 3
 class Solution {
     private int[][] dirs = {{0, -1}, {-1, 0}, {0, 1}, {1, 0}};
 

@@ -1,3 +1,6 @@
+// Input: [4, 1, 8, 7]
+// Output: True
+// Explanation: (8-4) * (7-1) = 24
 class Solution {
     public boolean judgePoint24(int[] nums) {
         List<Double> list = new ArrayList<>();
@@ -7,38 +10,33 @@ class Solution {
         return dfs(list);
     }
 
-    // 每次dfs都是选取两张牌
+    // Choose two cards for every round of dfs
     private boolean dfs(List<Double> list) {
-        if (list.size() == 1) {
-            // 如果此时list只剩下了一张牌
-            if (Math.abs(list.get(0)- 24.0) < 0.001) {
-                return true;
-            }
+        if (list.size() == 1) {        
+            if (Math.abs(list.get(0)- 24.0) < 0.001)
+                return true;            
             return false;
         }
         
-        // 选取两张牌
-        for(int i = 0; i < list.size(); i++) {
-            for(int j = i + 1; j < list.size(); j++) {
-                // 对于每下一个可能的产生的组合
+        // choose two cards
+        for (int i = 0; i < list.size(); i++)
+            for (int j = i + 1; j < list.size(); j++)
                 for (double c : compute(list.get(i), list.get(j))) {
                     List<Double> nextRound = new ArrayList<>();
-                    // 将他们加入到下一个list循环中去
+                    // add computed result to next round as one card
                     nextRound.add(c);
-                    for(int k = 0; k < list.size(); k++) {
+                    for (int k = 0; k < list.size(); k++) {
                         if(k == j || k == i) continue;
                         nextRound.add(list.get(k));
                     }
-                    if(dfs(nextRound)) return true;
+                    if (dfs(nextRound)) return true;
                 }
-            }
-        }
+         
         return false;
-
     }
-    // 计算下一个可能产生的组合
+
     private List<Double> compute(double a, double b) {
-        List<Double> res = Arrays.asList(a + b,a-b,b-a,a*b,a/b,b/a);
+        List<Double> res = Arrays.asList(a + b, a - b, b - a, a * b, a / b, b / a);
         return res;
     }
 }

@@ -1,3 +1,6 @@
+// Input: 2736
+// Output: 7236
+// Explanation: Swap the number 2 and the number 7.
 class Solution {
     public int maximumSwap(int num) {
         char[] digits = Integer.toString(num).toCharArray();

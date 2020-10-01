@@ -1,3 +1,8 @@
+// Input: S = 'bccb'
+// Output: 6
+// Explanation: 
+// The 6 different non-empty palindromic subsequences are 'b', 'c', 'bb', 'cc', 'bcb', 'bccb'.
+// Note that 'bcb' is counted only once, even though it occurs twice.
 class Solution {
     public int countPalindromicSubsequences(String S) {
         int len = S.length();
@@ -15,14 +20,10 @@ class Solution {
                     int low = i + 1;
                     int high = j - 1;
 
-              /* Variable low and high here are used to get rid of the duplicate*/
-
-                    while(low <= high && chs[low] != chs[j]){
-                        low++;
-                    }
-                    while(low <= high && chs[high] != chs[j]){
-                        high--;
-                    }
+                    /* Variable low and high here are used to get rid of the duplicate*/
+                    while(low <= high && chs[low] != chs[j]) low++;                    
+                    while(low <= high && chs[high] != chs[j]) high--;
+                    
                     if(low > high){
                         // consider the string from i to j is "a...a" "a...a"... where there is no character 'a' inside the leftmost and rightmost 'a'
                        /* eg:  "aba" while i = 0 and j = 2:  dp[1][1] = 1 records the palindrome{"b"}, 

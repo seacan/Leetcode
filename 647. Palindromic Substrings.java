@@ -1,3 +1,6 @@
+// Input: "aaa"
+// Output: 6
+// Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 class Solution {
     private int count = 0;
     

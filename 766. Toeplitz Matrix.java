@@ -1,3 +1,10 @@
+// Input:
+// matrix = [
+//   [1,2,3,4],
+//   [5,1,2,3],
+//   [9,5,1,2]
+// ]
+// Output: True
 class Solution {
     public boolean isToeplitzMatrix(int[][] matrix) {
         for (int i = 0; i < matrix.length - 1; i++)

@@ -2,13 +2,15 @@ class Solution {
     public int findClosestLeaf(TreeNode root, int k) {
         Map<TreeNode, TreeNode> back = new HashMap<>();
         TreeNode kNode = find(root, k, back);
+        if (kNode == null) return -1;
+
         Queue<TreeNode> q = new PriorityQueue<>();
         q.offer(kNode);
         Set<TreeNode> visited = new HashSet<>();
         visited.add(kNode);
         while (!q.isEmpty()) {
             TreeNode t = q.poll();
-            if (t.left != null && t.right != null) return t.val;
+            if (t.left == null && t.right == null) return t.val;
             if (t.left != null && !visited.contains(t.left)) {
                 visited.add(t.left);
                 q.offer(t.left);

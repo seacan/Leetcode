@@ -14,7 +14,7 @@ class AutocompleteSystem {
         public Trie() {
             root = new TrieNode();
         }
-        // Inserts a word into the trie.
+
         public void insert(String word) {
             TrieNode node = root;
             for (int i = 0; i < word.length(); i ++) {
@@ -30,6 +30,7 @@ class AutocompleteSystem {
                 node = node.children.get(c);
             }
         }
+
         private TrieNode searchNode(String pre) {
             HashMap<Character, TrieNode> children = root.children;
             TrieNode node = root;
@@ -43,6 +44,7 @@ class AutocompleteSystem {
             return node;
         }
     }
+
     HashMap<String, Integer> count = new HashMap<String, Integer>();
     Trie trie = new Trie();
     String curr = "";
@@ -72,32 +74,16 @@ class AutocompleteSystem {
 
         return res;
     }
-    private List<String> getSuggestions() {
-        List<String> res = new LinkedList<String>();
-        TrieNode node = trie.searchNode(curr);
-        if (node == null) {
-            return res;
-        }
-        List<String> cands = node.cands;
-        Collections.sort(cands, new Comparator<String>(){
-            public int compare(String s1, String s2) {
-                if (count.get(s1) != count.get(s2)) {
-                    return count.get(s2) - count.get(s1);
-                }
-                return s1.compareTo(s2);
-            }
-        });
-        int added = 0;
-        for (String s:cands) {
-            res.add(s);
-            added ++;
-            if (added > 2) {
-                break;
-            }
-        }
-        return res;
-    }
 
+    private List<String> getSuggestions() {
+        TrieNode node = trie.searchNode(curr);
+        if (node == null) return new LinkedList<String>();
+
+        List<String> res = new LinkedList<String>(node.cands);
+        Collections.sort(res, (a, b) -> count.get(b) - count.get(a));
+
+        return res.subList(0, 2);
+    }
 }
 
 /**

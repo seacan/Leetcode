@@ -1,3 +1,9 @@
+// Input: S = "ababcbacadefegdehijhklij"
+// Output: [9,7,8]
+// Explanation:
+// The partition is "ababcbaca", "defegde", "hijhklij".
+// This is a partition so that each letter appears in at most one part.
+// A partition like "ababcbacadefegde", "hijhklij" is incorrect, because it splits S into less parts.
 class Solution {
     public List<Integer> partitionLabels(String S) {
         if (S == null || S.length() == 0) return null;
@@ -8,12 +14,12 @@ class Solution {
             map[S.charAt(i) - 'a'] = i;
 
         // record the end index of the current sub string
-        int last = 0, start = 0;
+        int maxReach = 0, start = 0;
         for (int i = 0; i < S.length(); i++) {
-            last = Math.max(last, map[S.charAt(i) - 'a']);
-            if (last == i) {
-                list.add(last - start + 1);
-                start = last + 1;
+            maxReach = Math.maxmaxReach, map[S.charAt(i) - 'a']);
+            if (maxReach == i) {
+                list.add(maxReach - start + 1);
+                start = maxReach + 1;
             }
         }
         return list;
