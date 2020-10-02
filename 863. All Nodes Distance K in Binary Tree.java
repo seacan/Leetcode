@@ -2,7 +2,7 @@ class Solution {
     private Map<TreeNode, List<TreeNode>> map = new HashMap();
     
     public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
-         List<Integer> res = new ArrayList<Integer> ();
+        List<Integer> res = new ArrayList<Integer> ();
         if (root == null || K < 0) return res;
         buildMap(root, null); 
         if (!map.containsKey(target)) return res;

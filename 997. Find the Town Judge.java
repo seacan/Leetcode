@@ -1,3 +1,5 @@
+// Input: N = 3, trust = [[1,3],[2,3]]
+// Output: 3
 class Solution {
     public int findJudge(int N, int[][] trust) {
         int[] count = new int[N+1];

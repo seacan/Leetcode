@@ -1,9 +1,13 @@
+// Input: 10
+// Output: 4
+// Explanation: 
+// There are four good numbers in the range [1, 10] : 2, 5, 6, 9.
+// Note that 1 and 10 are not good numbers, since they remain unchanged after rotating.
 class Solution {
     public int rotatedDigits(int N) {
         int count = 0;
-        for (int i = 1; i <= N; i ++) {
-            if (isValid(i)) count ++;
-        }
+        for (int i = 1; i <= N; i ++)
+            if (isValid(i)) count ++;        
         return count;
     }
     

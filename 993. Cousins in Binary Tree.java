@@ -12,9 +12,8 @@ class Solution {
                 if (cur.val == A) isAexist = true;
                 if (cur.val == B) isBexist = true;
                 if (cur.left != null && cur.right != null)
-                    if ((cur.left.val == A && cur.right.val == B) ||
-                        (cur.left.val == B && cur.right.val == A))
-                        return false;                                                        
+                if ((cur.left.val == A && cur.right.val == B) || (cur.left.val == B && cur.right.val == A))
+                    return false;                                                        
                 if (cur.left != null) queue.offer(cur.left);            
                 if (cur.right != null) queue.offer(cur.right);                
             }

@@ -1,3 +1,5 @@
+// Input: stamp = "abca", target = "aabcaca"
+// Output: [3,0,1]
 class Solution {
     public int[] movesToStamp(String stamp, String target) {
         char[] S = stamp.toCharArray();
@@ -33,11 +35,9 @@ class Solution {
     }
     
     private boolean canReplace(char[] T, int p, char[] S) {
-        for (int i = 0; i < S.length; i++) {
-            if (T[i + p] != '*' && T[i + p] != S[i]) {
+        for (int i = 0; i < S.length; i++)
+            if (T[i + p] != '*' && T[i + p] != S[i])
                 return false;
-            }
-        }
         return true;
     }
     

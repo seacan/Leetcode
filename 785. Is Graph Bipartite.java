@@ -1,9 +1,18 @@
+// Input: [[1,3], [0,2], [1,3], [0,2]]
+// Output: true
+// Explanation: 
+// The graph looks like this:
+// 0----1
+// |    |
+// |    |
+// 3----2
+// We can divide the vertices into two groups: {0, 2} and {1, 3}.
 class Solution {
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;
         int[] colors = new int[n];
 
-        //This graph might be a disconnected graph. So check each unvisited node.
+        // This graph might be a disconnected graph. So check each unvisited node.
         for (int i = 0; i < n; i++)
             if (colors[i] == 0 && !validColor(graph, colors, 1, i))
                 return false;

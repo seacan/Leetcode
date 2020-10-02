@@ -1,3 +1,6 @@
+// Input: N = 4, dislikes = [[1,2],[1,3],[2,4]]
+// Output: true
+// Explanation: group1 [1,4], group2 [2,3]
 class Solution {
     public boolean possibleBipartition(int N, int[][] dislikes) {
         int[][] graph = new int[N][N];

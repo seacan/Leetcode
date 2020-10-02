@@ -14,11 +14,8 @@ class Solution {
     
     private boolean canEatAll(int[] piles, int K, int H) {
         int countHour = 0;        
-        for (int pile : piles) {
-            countHour += pile / K;
-            if (pile % K != 0)
-                countHour++;
-        }
+        for (int pile : piles)
+            countHour += Math.ceil((double) pile / K);
         return countHour <= H;
     }
     

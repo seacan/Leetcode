@@ -1,3 +1,4 @@
+// Input: "())", Output: 1
 class Solution {
     public int minAddToMakeValid(String S) {
         int left = 0, right = 0;

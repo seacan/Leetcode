@@ -1,3 +1,5 @@
+// Input: "I speak Goat Latin"
+// Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
 class Solution {
     public String toGoatLatin(String S) {
         Set<Character> vowels = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'));

@@ -8,9 +8,7 @@ class Solution {
                 pq.poll();            
         }
         int[][] res = new int[K][2];
-        while (K > 0) {
-            res[--K] = pq.poll();
-        }
+        while (K > 0) res[--K] = pq.poll();        
         return res;
     }
 }

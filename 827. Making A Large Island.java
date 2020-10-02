@@ -1,7 +1,10 @@
+// Input: [[1, 0], [0, 1]]
+// Output: 3
+// Explanation: Change one 0 to 1 and connect two 1s, then we get an island with area = 3.
 class Solution {
     public int largestIsland(int[][] grid) {
         int max = 0, m = grid.length, n = grid[0].length;
-        boolean hasZero = false; //To check if there is any zero in the grid
+        boolean hasZero = false; // Check if there is any zero in the grid
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 0) {

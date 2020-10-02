@@ -1,3 +1,5 @@
+// Input: S = "cba", T = "abcd"
+// Output: "cbad"
 class Solution {
     public String customSortString(String S, String T) {
         int[] count = new int[26];

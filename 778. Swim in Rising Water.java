@@ -1,3 +1,10 @@
+// Input: [[0,2],[1,3]]
+// Output: 3
+// Explanation:
+// At time 0, you are in grid location (0, 0).
+// You cannot go anywhere else because 4-directionally adjacent neighbors have a higher elevation than t = 0.
+// You cannot reach point (1, 1) until time 3.
+// When the depth of water is 3, we can swim anywhere inside the grid.
 class Solution {
     final static int[][] steps = {{0,1},{0,-1}, {1,0},{-1,0}};
     public int swimInWater(int[][] grid) {

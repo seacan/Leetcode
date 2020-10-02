@@ -1,3 +1,5 @@
+// Input: A = "this apple is sweet", B = "this apple is sour"
+// Output: ["sweet","sour"]
 class Solution {
     public String[] uncommonFromSentences(String A, String B) {
         Map<String, Integer> count = new HashMap<>();

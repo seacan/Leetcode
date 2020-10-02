@@ -1,3 +1,5 @@
+// Input: n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]], src = 0, dst = 2, k = 1
+// Output: 200
 class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
         Map<Integer, Map<Integer, Integer>> prices = new HashMap<>();
@@ -6,9 +8,9 @@ class Solution {
             prices.get(f[0]).put(f[1], f[2]);
         }
         Queue<int[]> pq = new PriorityQueue<>((a, b) -> (Integer.compare(a[0], b[0])));
-        pq.add(new int[] {0, src, K + 1});
+        pq.offer(new int[] {0, src, K + 1});
         while (!pq.isEmpty()) {
-            int[] top = pq.remove();
+            int[] top = pq.poll();
             int price = top[0];
             int city = top[1];
             int stops = top[2];

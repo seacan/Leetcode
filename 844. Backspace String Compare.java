@@ -1,3 +1,6 @@
+// Input: S = "ab#c", T = "ad#c"
+// Output: true
+// Explanation: Both S and T become "ac".
 class Solution {
     public boolean backspaceCompare(String S, String T) {
         int i = S.length() - 1, j = T.length() - 1, back;
