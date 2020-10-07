@@ -1,3 +1,6 @@
+// Input: source = “xyz”, target = “xzyxz”
+// Output: 3
+// Explanation: The target string can be constructed as follows “xz” + “y” + “xz”.
 class Solution {
     public int shortestWay(String source, String target) {
         int t = 0, res = 0;

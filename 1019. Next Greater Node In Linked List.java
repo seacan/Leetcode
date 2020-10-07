@@ -1,3 +1,5 @@
+// Input: [2,1,5]
+// Output: [5,5,0]
 class Solution {
     public int[] nextLargerNodes(ListNode head) {
         ArrayList<Integer> A = new ArrayList<>();

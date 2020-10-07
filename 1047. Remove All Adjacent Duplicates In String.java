@@ -1,3 +1,4 @@
+// Input: "abbaca", Output: "ca"
 class Solution {
     public String removeDuplicates(String S) {
         int cur = 0, n = S.length();

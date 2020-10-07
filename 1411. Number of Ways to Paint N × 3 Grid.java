@@ -1,3 +1,4 @@
+// no two cells that share vertical or horizontal sides have the same colour
 class Solution {
     // pattern 121: 121, 131, 212, 232, 313, 323.
     // pattern 123: 123, 132, 213, 231, 312, 321.

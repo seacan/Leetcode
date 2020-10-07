@@ -11,7 +11,7 @@ class Solution {
         }
         // the array already sorted, not smaller permutation
         if (idx == -1) return A;
-        // find the largest j such that A[j] > A[i], then swap them
+        // find the rightmost i such that A[i] < A[idx], then swap them
         for (int i = A.length - 1; i > idx; i--) {
             // the second check to skip duplicate numbers
             if (A[i] < A[idx] && A[i] != A[i - 1]) {

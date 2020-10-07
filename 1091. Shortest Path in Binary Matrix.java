@@ -9,13 +9,13 @@ class Solution {
         boolean[][] visited = new boolean[m][n];
         visited[0][0] = true;
         Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{0, 0});
+        queue.offer(new int[]{0, 0});
 
         int ans = 0;
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int i = 0; i < size; i++) {
-                int[] pop = queue.remove();
+                int[] pop = queue.poll();
                 if (pop[0] == m - 1 && pop[1] == n - 1) return ans + 1;
                 for (int k = 0; k < 8; k++) {
                     int nextX = dir[k][0] + pop[0];

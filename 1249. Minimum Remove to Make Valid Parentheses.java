@@ -1,3 +1,5 @@
+// Input: s = "a)b(c)d"
+// Output: "ab(c)d"
 class Solution {
     public String minRemoveToMakeValid(String s) {
         StringBuilder sb = new StringBuilder(s);

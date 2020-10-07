@@ -1,3 +1,9 @@
+// Input: s = "deeedbbcccbdaa", k = 3
+// Output: "aa"
+// Explanation: 
+// First delete "eee" and "ccc", get "ddbbbdaa"
+// Then delete "bbb", get "dddaa"
+// Finally delete "ddd", get "aa"
 class Solution {
     public String removeDuplicates(String s, int k) {
         int i = 0, n = s.length(), count[] = new int[n];

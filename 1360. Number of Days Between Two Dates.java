@@ -1,3 +1,5 @@
+// Input: date1 = "2020-01-15", date2 = "2019-12-31"
+// Output: 15
 class Solution {
     private int[] daysOfMonth = new int[]{31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     

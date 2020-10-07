@@ -1,4 +1,22 @@
+// Input: moves = [[0,0],[2,0],[1,1],[2,1],[2,2]]
+// Output: "A"
 class Solution {
+    public String tictactoe(int[][] moves) {
+        int n = moves.length;
+        char[][] board = new char[3][3];
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++) board[i][j] = '.';
+
+        // initialize
+        for (int i = 0; i < n; i++)
+            if (i % 2 == 0)
+                board[moves[i][0]][moves[i][1]] = 'X';
+            else
+                board[moves[i][0]][moves[i][1]] = 'O';
+
+        return checkBoard(board);
+    }
+
     private static String checkBoard(char[][] board) {
         // check all columns
         for (int j = 0; j < 3; j++) {
@@ -41,21 +59,5 @@ class Solution {
 
         if (c != 9) return "Pending";
         return "Draw";
-    }
-
-    public String tictactoe(int[][] moves) {
-        int n = moves.length;
-        char[][] board = new char[3][3];
-        for (int i = 0; i < 3; i++)
-            for (int j = 0; j < 3; j++) board[i][j] = '.';
-
-        // initialize
-        for (int i = 0; i < n; i++)
-            if (i % 2 == 0)
-                board[moves[i][0]][moves[i][1]] = 'X';
-            else
-                board[moves[i][0]][moves[i][1]] = 'O';
-
-        return checkBoard(board);
     }
 }

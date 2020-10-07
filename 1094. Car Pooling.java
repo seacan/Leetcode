@@ -1,3 +1,6 @@
+// trip[i] = [num_passengers, start_location, end_location]
+// Input: trips = [[2,1,5],[3,3,7]], capacity = 4
+// Output: false
 class Solution {
     public boolean carPooling(int[][] trips, int capacity) {
         Map<Integer, Integer> stops = new TreeMap<>();
@@ -12,5 +15,21 @@ class Solution {
             if (capacity < 0) break;
         }
         return capacity >= 0;
+    }
+}
+
+class Solution {
+    public boolean carPooling(int[][] trips, int capacity) {
+        Arrays.sort(trips, Comparator.comparingInt(a -> a[1]));
+        Queue<int[]> minHeap = new PriorityQueue<>(Comparator.comparingInt(a -> a[2]));
+        int curCapacity = 0;
+        for (int[] trip : trips) {
+            while (!minHeap.isEmpty() && trip[1] >= minHeap.peek()[2])
+                curCapacity -= minHeap.poll()[0];
+            minHeap.offer(trip);
+            curCapacity += trip[0];
+            if (curCapacity > capacity) return false;
+        }
+        return true;
     }
 }
