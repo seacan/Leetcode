@@ -1,12 +1,12 @@
 public class Solution {
     public int jump(int[] A) {
-        int jumps = 0, curEnd = 0, curFarthest = 0;
+        int jumps = 0, curReach = 0, nextReach = 0;
         // A.length - 1 to avoid adding the last unnecessary jump
         for (int i = 0; i < A.length - 1; i++) {
-            curFarthest = Math.max(curFarthest, i + A[i]);
-            if (i == curEnd) {
+            nextReach = Math.max(nextReach, i + A[i]);
+            if (i == curReach) {
                 jumps++;
-                curEnd = curFarthest;
+                curReach = nextReach;
             }
         }
         return jumps;

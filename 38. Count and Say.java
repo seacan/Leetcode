@@ -1,3 +1,8 @@
+// 1.     1
+// 2.     11
+// 3.     21
+// 4.     1211
+// 5.     111221
 public class Solution {
     public String countAndSay(int n) {
         if (n == 1) return "1";
