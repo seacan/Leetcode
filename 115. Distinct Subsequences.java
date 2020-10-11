@@ -1,3 +1,5 @@
+// Input: S = "rabbbit", T = "rabbit"
+// Output: 3
 // solution 1: one string DP
 public class Solution {
     public int numDistinct(String S, String T) {
@@ -15,17 +17,17 @@ public class Solution {
 // Solution 2: two strings DP
 public class Solution {
     public int numDistinct(String S, String T) {
-        int[][] mem = new int[T.length() + 1][S.length() + 1];
-        for (int j = 0; j <= S.length(); j++) mem[0][j] = 1;
-        for (int i = 0; i < T.length(); i++)
-            for (int j = 0; j < S.length(); j++) {
-                if (T.charAt(i) == S.charAt(j))
-                    mem[i + 1][j + 1] = mem[i][j] + mem[i + 1][j];
+        int[][] mem = new int[S.length() + 1][T.length() + 1];
+        for (int i = 0; i <= S.length(); i++) mem[i][0] = 1;
+        for (int i = 1; i <= S.length(); i++)
+            for (int j = 1; j <= T.length(); j++) {
+                if (S.charAt(i - 1) == T.charAt(j - 1))
+                    mem[i][j] = mem[i - 1][j - 1] + mem[i - 1][j];
                 else
-                    mem[i + 1][j + 1] = mem[i + 1][j];
+                    mem[i][j] = mem[i - 1][j];
             }
 
-        return mem[T.length()][S.length()];
+        return mem[S.length()][T.length()];
     }
 }
 

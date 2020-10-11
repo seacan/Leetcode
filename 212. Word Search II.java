@@ -1,22 +1,21 @@
-public class Solution {
+class Solution {
     // use set avoid adding 2 a in case of ["aa"], ["a"]
     private Set<String> res = new HashSet<String>();
+
     public List<String> findWords(char[][] board, String[] words) {
         Trie trie = new Trie();
         for (String s : words) trie.insert(s);
 
         int m = board.length, n = board[0].length;
-        boolean[][] visited = new boolean[m][n];
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
-                traverse(board, visited, "", i, j, trie);
+                traverse(board, "", i, j, 0, trie);
 
         return new ArrayList<String>(res);
     }
 
-    private void traverse(char[][] board,boolean[][] visited, String curStr, int i, int j, Trie trie) {
-        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) return;
-        if (visited[i][j]) return;
+    private void traverse(char[][] board, String curStr, int i, int j, int index, Trie trie) {
+        if (i < 0 || i >= board.length || j < 0 || j >= board[0].length || board[i][j] == '*') return;
 
         // string is primitive types, not passed by reference
         curStr += board[i][j];
@@ -25,14 +24,14 @@ public class Solution {
         if (!trie.startsWith(curStr)) return;
         if (trie.search(curStr)) res.add(curStr);
 
-        visited[i][j] = true;
-        traverse(board, visited, curStr, i + 1, j, trie);
-        traverse(board, visited, curStr, i - 1, j, trie);
-        traverse(board, visited, curStr, i, j + 1, trie);
-        traverse(board, visited, curStr, i, j - 1, trie);
-        visited[i][j] = false;
+        board[i][j] = '*';
+        traverse(board, curStr, i + 1, j, index + 1, trie);
+        traverse(board, curStr, i - 1, j, index + 1, trie);
+        traverse(board, curStr, i, j + 1, index + 1, trie);
+        traverse(board, curStr, i, j - 1, index + 1, trie);
+        board[i][j] = curStr.charAt(index);
     }
-    
+
     class TrieNode {
         public boolean isWordEnd;
         public HashMap<Character, TrieNode> children;

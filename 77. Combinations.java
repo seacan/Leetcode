@@ -1,3 +1,13 @@
+// Input: n = 4, k = 2
+// Output:
+// [
+//   [2,4],
+//   [3,4],
+//   [2,3],
+//   [1,2],
+//   [1,3],
+//   [1,4],
+// ]
 public class Solution {
     private List<List<Integer>> res = new ArrayList<List<Integer>>();
     private List<Integer> sol = new ArrayList<Integer>();

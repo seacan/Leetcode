@@ -5,6 +5,7 @@ public class Solution {
         if (s1Length + s2Length != s3Length) return false;
 
         Boolean[][] mem = new Boolean[s1Length + 1][s2Length + 1];
+        // s1(0,i) and s2(0,j) -> s3(0,i+j)
         for (int i = 0; i <= s1Length; i++)
             for (int j = 0; j <= s2.length(); j++) {
                 if (i == 0 && j == 0) {

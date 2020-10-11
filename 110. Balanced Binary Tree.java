@@ -1,6 +1,6 @@
 public class Solution {
     public boolean isBalanced(TreeNode root) {
-        return depth(root)!=-1;
+        return depth(root) != -1;
     }
 
     private int depth(TreeNode root) {

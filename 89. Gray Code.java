@@ -1,3 +1,7 @@
+// Input: 2
+// Output: [0,1,3,2]
+// Explanation:
+// 00 - 0, 01 - 1, 11 - 3, 10 - 2
 public class Solution {
     public List<Integer> grayCode(int n) {
         List<Integer> res = new ArrayList<Integer>();
