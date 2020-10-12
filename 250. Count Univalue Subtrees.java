@@ -14,6 +14,7 @@ public class Solution {
         if (!isUnival(root.left, root.val) | !isUnival(root.right, root.val)) {
             return false;
         }
+        // only increase the counter when both children return true
         res++;
         return root.val == val;
     }

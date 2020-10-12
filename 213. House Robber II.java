@@ -6,8 +6,8 @@ public class Solution {
     }
 
     private int robHelper(int[] nums, int start, int end) {
-        int preInclude = 0, preExclude = 0;
-        for (int i = start; i <= end; i++) {
+        int preInclude = nums[start], preExclude = 0;
+        for (int i = start + 1; i <= end; i++) {
             int include = nums[i] + preExclude;
             int exclude = Math.max(preExclude, preInclude);
             preInclude = include;

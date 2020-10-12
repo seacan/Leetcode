@@ -28,10 +28,9 @@ class Solution {
                 number = 0;
                 result *= stack.pop();    //stack.pop() is the sign before the parenthesis
                 result += stack.pop();   //stack.pop() now is the result calculated before the parenthesis
-
             }
+            if (i == s.length() - 1) result += sign * number;
         }
-        if (number != 0) result += sign * number;
         return result;
     }
 }
