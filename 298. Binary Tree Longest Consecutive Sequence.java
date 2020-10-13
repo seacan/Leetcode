@@ -1,3 +1,15 @@
+// Input:
+// 
+//    1
+//     \
+//      3
+//     / \
+//    2   4
+//         \
+//          5
+// 
+// Output: 3
+// Explanation: Longest consecutive sequence path is 3-4-5, so return 3.
 class Solution {
     private int res = 0;
     public int longestConsecutive(TreeNode root) {

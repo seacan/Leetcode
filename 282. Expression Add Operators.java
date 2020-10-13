@@ -1,3 +1,5 @@
+// Input: num = "123", target = 6
+// Output: ["1+2+3", "1*2*3"]
 class Solution {
     public List<String> addOperators(String num, int target) {
         List<String> res = new ArrayList<String>();

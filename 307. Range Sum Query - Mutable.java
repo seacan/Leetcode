@@ -43,7 +43,7 @@ class NumArray {
    
     void update(SegmentTreeNode root, int pos, int val) {
         if (root.start == root.end) {
-           root.sum = val;
+            root.sum = val;
         } else {
             int mid = root.start + (root.end - root.start) / 2;
             if (pos <= mid) {
@@ -68,7 +68,7 @@ class NumArray {
                 return sumRange(root.left, start, end);
             } else if (start >= mid+1) {
                 return sumRange(root.right, start, end);
-            }  else {    
+            } else {    
                 return sumRange(root.left, start, mid) + sumRange(root.right, mid+1, end);
             }
         }

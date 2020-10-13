@@ -1,3 +1,6 @@
+// Input: words = ["abcd","dcba","lls","s","sssll"]
+// Output: [[0,1],[1,0],[3,2],[2,4]]
+// Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
 class Solution {
     public List<List<Integer>> palindromePairs(String[] words) {
         List<List<Integer>> res = new ArrayList<>();

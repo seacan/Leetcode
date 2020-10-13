@@ -1,3 +1,6 @@
+// Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
+// Input: "(a)())()"
+// Output: ["(a)()()", "(a())()"]
 class Solution {
     public List<String> removeInvalidParentheses(String s) {
         List<String> res = new ArrayList<>();
