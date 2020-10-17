@@ -32,10 +32,9 @@ public class Codec {
     
     public TreeNode deserialize(Queue<String> q, int lower, int upper) {
         if (q.isEmpty()) return null;
-        String s = q.peek();
+        String s = q.poll();
         int val = Integer.parseInt(s);
         if (val < lower || val > upper) return null;
-        q.poll();
         TreeNode root = new TreeNode(val);
         root.left = deserialize(q, lower, val);
         root.right = deserialize(q, val, upper);

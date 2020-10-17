@@ -1,3 +1,7 @@
+// Input: 
+// s = "abcxyz123"
+// dict = ["abc","123"]
+// Output: "<b>abc</b>xyz<b>123</b>"
 class Solution {
     public String addBoldTag(String s, List<String> dict) {
         StringBuilder res = new StringBuilder();

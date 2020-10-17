@@ -23,8 +23,10 @@ class Solution {
         }
         return res;
     }
+}
 
-    // Iterative solution.
+// Iterative solution.
+class Solution {
     boolean hasPath(int[][] maze, int[] start, int[] destination) {
         int m = maze.length, n = maze[0].length;
         Queue<int[]> q = new PriorityQueue<>();

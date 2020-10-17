@@ -14,7 +14,7 @@ class RandomizedSet {
     public boolean insert(int val) {
         boolean contain = locs.containsKey(val);
         if (contain) return false;
-        locs.put( val, nums.size());
+        locs.put(val, nums.size());
         nums.add(val);
         return true;
     }
@@ -25,7 +25,7 @@ class RandomizedSet {
         if (!contain) return false;
         int loc = locs.get(val);
         if (loc < nums.size() - 1 ) { // not the last one than swap the last one with this val
-            int lastone = nums.get(nums.size() - 1 );
+            int lastone = nums.get(nums.size() - 1);
             nums.set(loc, lastone);
             locs.put(lastone, loc);
         }

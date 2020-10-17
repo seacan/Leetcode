@@ -9,6 +9,7 @@ class Solution {
 
     private void helper(int[] nums, int index, List<Integer> sol, List<List<Integer>> res) {
         if (sol.size() > 1) res.add(new LinkedList<Integer>(sol));
+        // local used, otherwise [4,6,7,7] will not be added
         Set<Integer> used = new HashSet<>();
         for (int i = index; i < nums.length; i++) {
             if (used.contains(nums[i])) continue;
