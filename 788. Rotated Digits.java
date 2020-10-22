@@ -6,8 +6,8 @@
 class Solution {
     public int rotatedDigits(int N) {
         int count = 0;
-        for (int i = 1; i <= N; i ++)
-            if (isValid(i)) count ++;        
+        for (int i = 1; i <= N; i++)
+            if (isValid(i)) count++;        
         return count;
     }
     

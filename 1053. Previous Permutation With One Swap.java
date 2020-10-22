@@ -1,3 +1,6 @@
+// Input: [3,1,1,3]
+// Output: [1,3,1,3]
+// Explanation: Swapping 1 and 3.
 class Solution {
     public int[] prevPermOpt1(int[] A) {
         if (A.length <= 1) return A;

@@ -20,8 +20,7 @@ class Solution {
         List<List<String>> result = new ArrayList<>();
         Set<String> visited = new HashSet<>();
         for (String email : graph.keySet()) {
-            if (!visited.contains(email)) {
-                visited.add(email);
+            if (!visited.contains(email)) {                
                 List<String> newList = new ArrayList<>();
                 dfs(newList, graph, visited, email);
                 Collections.sort(newList);
@@ -33,13 +32,11 @@ class Solution {
     }
 
     public void dfs(List<String> result, Map<String, Set<String>> graph, Set<String> visited, String curPoint) {
+        if (visited.contains(curPoint)) return;
+        visited.add(curPoint);
         result.add(curPoint);
         Set<String> neighbors = graph.get(curPoint);
-        for (String neighbor : neighbors) {
-            if (!visited.contains(neighbor)) {
-                visited.add(neighbor);
-                dfs(result, graph, visited, neighbor);
-            }
-        }
+        for (String neighbor : neighbors)     
+            dfs(result, graph, visited, neighbor);                    
     }
 }

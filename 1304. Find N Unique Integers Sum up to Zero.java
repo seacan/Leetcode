@@ -1,3 +1,6 @@
+// [0]
+// [-1, 1]
+// [-2, 0, 2]
 class Solution {
     public int[] sumZero(int n) {
         int[] A = new int[n];

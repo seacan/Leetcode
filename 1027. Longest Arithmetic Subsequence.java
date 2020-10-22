@@ -10,6 +10,7 @@ class Solution {
             dp[j] = new HashMap<>();
             for (int i = 0; i < j; i++) {
                 int d = A[j] - A[i];
+                // connect j to i
                 dp[j].put(d, dp[i].getOrDefault(d, 1) + 1);
                 res = Math.max(res, dp[j].get(d));
             }

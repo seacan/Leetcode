@@ -2,6 +2,9 @@
 // age[B] <= 0.5 * age[A] + 7
 // age[B] > age[A]
 // age[B] > 100 && age[A] < 100
+// Input: [20,30,100,110,120]
+// Output: 3
+// Explanation: Friend requests are made 110 -> 100, 120 -> 110, 120 -> 100.
 class Solution {
     public int numFriendRequests(int[] ages) {
         int res = 0;

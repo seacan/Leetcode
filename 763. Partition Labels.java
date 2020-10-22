@@ -16,7 +16,7 @@ class Solution {
         // record the end index of the current sub string
         int maxReach = 0, start = 0;
         for (int i = 0; i < S.length(); i++) {
-            maxReach = Math.maxmaxReach, map[S.charAt(i) - 'a']);
+            maxReach = Math.max(maxReach, map[S.charAt(i) - 'a']);
             if (maxReach == i) {
                 list.add(maxReach - start + 1);
                 start = maxReach + 1;
