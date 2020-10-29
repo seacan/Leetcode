@@ -9,12 +9,12 @@
 class Solution {
     public int mincostTickets(int[] days, int[] costs) {
         int lastDay = days[days.length - 1];
-        boolean[] dayIncluded = new boolean[lastDay + 1];
-        for (int day : days) dayIncluded[day] = true;
+        Set<Integer> dayIncluded = new HashSet<>();
+        for (int day : days) dayIncluded.add(day);
         int[] minCost = new int[lastDay + 1];
         minCost[0] = 0;
         for (int day = 1; day <= lastDay; ++day) {
-            if (!dayIncluded[day]) {
+            if (!dayIncluded.contains(day)) {
                 minCost[day] = minCost[day - 1];
                 continue;
             }
@@ -24,7 +24,6 @@ class Solution {
             min = Math.min(min, minCost[Math.max(0, day - 30)] + costs[2]);
             minCost[day] = min;
         }
-
         return minCost[lastDay];
     }
 }

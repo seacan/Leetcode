@@ -13,14 +13,14 @@ class Solution {
         int end = A.length - 1;
         while (end > 0) {
             int max = A[0], index = 0;
-            //find the index of the max element in current unsorted part of the array; up to len
+            // find the index of the max element in current unsorted part of the array; up to len
             for (int i = 0; i <= end; i++)
                 if (A[i] > max) {
                     max = A[i];
                     index = i;
                 }
 
-            //if max is at last position, no need to do any flips
+            // if max is at last position, no need to do any flips
             if (index == end) {
                 end--;
                 continue;
