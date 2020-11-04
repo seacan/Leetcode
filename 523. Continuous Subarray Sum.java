@@ -2,7 +2,7 @@
 // Output: True
 // Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42 (6*7).
 class Solution {
-    public static boolean checkSubarraySum(int[] nums, int k) {
+    public boolean checkSubarraySum(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();
         map.put(0, -1);
         int runningSum = 0;

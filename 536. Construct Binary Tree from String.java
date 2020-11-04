@@ -17,10 +17,10 @@ class Solution {
             if (s.charAt(i) == '(') ++cnt;
             else if (s.charAt(i) == ')') --cnt;
             if (cnt == 0 && start == found) {
-                cur.left = str2tree(s.substring(start + 1, i - start - 1));
+                cur.left = str2tree(s.substring(start + 1, i));
                 start = i + 1;
             } else if (cnt == 0) {
-                cur.right = str2tree(s.substring(start + 1, i - start - 1));
+                cur.right = str2tree(s.substring(start + 1, i));
             }
         }
         return cur;

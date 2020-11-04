@@ -4,13 +4,13 @@
 // 2 units to the 4th stone, then 3 units to the 6th stone, 
 // 4 units to the 7th stone, and 5 units to the 8th stone.
 class Solution {
-   public boolean canCross(int[] stones) {
+    public boolean canCross(int[] stones) {
         if (stones.length == 0) return true;
 
         HashMap<Integer, HashSet<Integer>> map = new HashMap<>(stones.length);
         for (int i = 0; i < stones.length; i++)
             map.put(stones[i], new HashSet<Integer>());
-        map.get(0).add(1);
+        map.get(stones[0]).add(1);
 
         for (int i = 0; i < stones.length - 1; i++) {
             int stone = stones[i];

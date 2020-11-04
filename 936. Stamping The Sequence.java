@@ -15,10 +15,7 @@ class Solution {
                     stars = doReplace(T, i, S.length, stars);
                     doneReplace = true;
                     visited[i] = true;
-                    res.add(i);
-                    if (stars == T.length) {
-                        break;
-                    }
+                    res.add(i);                    
                 }
             }
             
