@@ -1,30 +1,28 @@
 // Solution 1: iterative solution
 public class Solution {
     public List<TreeNode> generateTrees(int n) {
-        List<TreeNode>[] res = new List[n+1];
-        res[0] = new ArrayList<TreeNode>();
-        res[0].add(null);
-
-        for(int cur = 1;cur<=n;cur++){
-            res[cur] = new ArrayList<TreeNode>();
-            for(int i=0;i<cur;i++)
-                for(TreeNode left : res[i])
-                    for(TreeNode right : res[cur-1-i]) {
-                        TreeNode root = new TreeNode(i + 1);
-                        root.left = left;
-                        root.right = clone(right, i + 1);
-                        res[cur].add(root);
-                    }
-        }
-        return res[n];
+        if (n <= 0) return new ArrayList<>();
+        return generateTreesHelper(1, n);
     }
 
-    private TreeNode clone(TreeNode root, int offset) {
-        if (root == null) return null;
-        TreeNode newRoot = new TreeNode(root.val + offset);
-        newRoot.left = clone(root.left, offset);
-        newRoot.right = clone(root.right, offset);
-        return newRoot;
+    private List<TreeNode> generateTreesHelper(int start, int end) {
+        List<TreeNode> res = new ArrayList<>();
+        if (start > end) {
+            res.add(null);
+            return res;
+        }
+        for (int i = start; i <= end; i++) {
+            List<TreeNode> leftSubtrees = generateTreesHelper(start, i - 1);
+            List<TreeNode> rightSubtrees = generateTreesHelper(i + 1, end);
+            for (TreeNode left : leftSubtrees)
+                for (TreeNode right : rightSubtrees) {
+                    TreeNode root = new TreeNode(i);
+                    root.left = left;
+                    root.right = right;
+                    res.add(root);
+                }
+        }
+        return res;
     }
 }
 

@@ -1,5 +1,32 @@
 class Solution {
     public int calculate(String s) {
+        int res = 0, num = 0;
+        int sign = 1;
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (Character.isDigit(c)) {
+                num = 10 * num + (int) (c - '0');
+            } else if (c == '(') {
+                int j = i, cnt = 0;
+                for (; i < s.length(); i++) {
+                    if (s.charAt(i) == '(') ++cnt;
+                    if (s.charAt(i) == ')') --cnt;
+                    if (cnt == 0) break;
+                }
+                num = calculate(s.substring(j + 1, i));
+            }             
+            if (c == '+' || c == '-' || i == s.length() - 1) {
+                res += sign * num;
+                sign = c == '+' ? 1 : -1;
+                num = 0;
+            }
+        }
+        return res;
+    }
+}
+
+class Solution {
+    public int calculate(String s) {
         Stack<Integer> stack = new Stack<Integer>();
         int result = 0;
         int number = 0;

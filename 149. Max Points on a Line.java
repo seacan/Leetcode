@@ -18,15 +18,8 @@ class Solution {
                     slope = (double) (points[i][1] - points[j][1]) / (double) (points[i][0] - points[j][0]);
                 map.put(slope, map.containsKey(slope) ? map.get(slope) + 1 : 1);
             }
-            max = Math.max(max, 1 + samePoint + getMaxValue(map));
+            max = Math.max(max, 1 + samePoint + map.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getValue());
         }
-        return max;
-    }
-
-    private int getMaxValue(Map<Double, Integer> map) {
-        int max = 0;
-        for (double key : map.keySet())
-            max = Math.max(max, map.get(key));
         return max;
     }
 }

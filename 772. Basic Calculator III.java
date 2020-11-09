@@ -13,7 +13,7 @@ class Solution {
                     if (s.charAt(i) == ')') --cnt;
                     if (cnt == 0) break;
                 }
-                num = calculate(s.substring(j + 1, i - j - 1));
+                num = calculate(s.substring(j + 1, i));
             }
             if (c == '+' || c == '-' || c == '*' || c == '/' || i == n - 1) {
                 switch (op) {

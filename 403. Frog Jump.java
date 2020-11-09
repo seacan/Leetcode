@@ -18,9 +18,8 @@ class Solution {
                 int reach = step + stone;
                 if (reach == stones[stones.length - 1])
                     return true;
-                HashSet<Integer> set = map.get(reach);
-                // ignore non existing steps
-                if (set != null) {
+                if (map.containsKey(reach)) {
+                    HashSet<Integer> set = map.get(reach);
                     set.add(step);
                     if (step - 1 > 0) set.add(step - 1);
                     set.add(step + 1);

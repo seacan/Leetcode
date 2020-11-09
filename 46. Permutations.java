@@ -26,22 +26,25 @@ public class Solution {
 // Solution 2: backtracking
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> list = new ArrayList<>();
-        // Arrays.sort(nums); // not necessary
-        backtrack(list, new ArrayList<>(), nums);
-        return list;
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> sol = new ArrayList<>();
+        boolean[] used = new boolean[nums.length];
+        permuteHelper(nums, used, sol, res);
+        return res;
     }
 
-    private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums) {
-        if (tempList.size() == nums.length) {
-            list.add(new ArrayList<>(tempList));
-        } else {
-            for (int i = 0; i < nums.length; i++) {
-                if (tempList.contains(nums[i])) continue; // element already exists, skip
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums);
-                tempList.remove(tempList.size() - 1);
-            }
+    private void permuteHelper(int[] nums, boolean[] used, List<Integer> sol, List<List<Integer>> res) {
+        if (sol.size() == nums.length) {
+            res.add(new ArrayList<>(sol));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (used[i]) continue;
+            used[i] = true;
+            sol.add(nums[i]);
+            permuteHelper(nums, used, sol, res);
+            sol.remove(sol.size() - 1);
+            used[i] = false;
         }
     }
 }
