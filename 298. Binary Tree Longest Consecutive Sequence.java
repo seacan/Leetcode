@@ -11,23 +11,20 @@
 // Output: 3
 // Explanation: Longest consecutive sequence path is 3-4-5, so return 3.
 class Solution {
-    private int res = 0;
     public int longestConsecutive(TreeNode root) {
         if (root == null) return 0;
-        dfs(root, 1);
-        return res;
+        int res = helper(root, 1);
+        return Math.max(res, Math.max(longestConsecutive(root.left), longestConsecutive(root.right)));
     }
 
-    private void dfs(TreeNode root, int len) {
-        res = Math.max(res, len);
-        if (root.left != null) {
-            if (root.left.val == root.val + 1) dfs(root.left, len + 1);
-            else dfs(root.left, 1);
-        }
-        if (root.right != null) {
-            if (root.right.val == root.val + 1) dfs(root.right, len + 1);
-            else dfs(root.right, 1);
-        }
+    private int helper(TreeNode node, int diff) {
+        if (node == null) return 0;
+        int left = 0, right = 0;
+        if (node.left != null && node.val - node.left.val == diff)
+            left = 1 + helper(node.left, diff);
+        if (node.right != null && node.val - node.right.val == diff)
+            right = 1 + helper(node.right, diff);
+        return Math.max(left, right);
     }
 }
 

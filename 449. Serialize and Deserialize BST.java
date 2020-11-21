@@ -40,6 +40,15 @@ public class Codec {
         root.right = deserialize(q, val, upper);
         return root;
     }
+
+    public TreeNode deserialize(Queue<String> q, int upper) {
+        if (q.isEmpty() || !q.isEmpty() && Integer.parseInt(q.peek()) > upper) return null;        
+        int val = Integer.parseInt(q.poll());        
+        TreeNode root = new TreeNode(val);
+        root.left = deserialize(q, val);
+        root.right = deserialize(q, upper);
+        return root;
+    }
 }
 
 // Your Codec object will be instantiated and called as such:

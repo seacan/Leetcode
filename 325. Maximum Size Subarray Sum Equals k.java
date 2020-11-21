@@ -9,7 +9,7 @@ class Solution {
         for (int i = 0; i < nums.size(); i++) {
             sum += nums.get(i);
             if (map.containsKey(sum - k)) res = Math.max(res, i - map.get(sum - k));
-            if (!map.containsKey(sum)) map.put(sum, i);
+            if (!map.containsKey(sum)) map.put(sum, i);   // record most left pos
         }
         return res;
     }

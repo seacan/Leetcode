@@ -14,8 +14,7 @@ class Solution {
         int min = Integer.MAX_VALUE;
         for (int coin : coins) {
             int res = helper(coins, rem - coin, count);
-            if (res >= 0 && res < min)
-                min = 1 + res;
+            if (res != -1) min = Math.min(min, 1 + res);
         }
         count[rem] = (min == Integer.MAX_VALUE) ? -1 : min;
         return count[rem];
