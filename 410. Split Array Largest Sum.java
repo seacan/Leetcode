@@ -28,14 +28,14 @@ class Solution {
     }
 
     private boolean valid(long target, int[] nums, int m) {
-        int count = 1;
+        int count = 0;
         long total = 0;
         for (int num : nums) {
             total += num;
             if (total > target) {
                 total = num;
                 count++;
-                if (count > m) {
+                if (count >= m) {
                     return false;
                 }
             }
