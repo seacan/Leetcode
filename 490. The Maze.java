@@ -44,7 +44,10 @@ class Solution {
                 }
                 x -= d[0];
                 y -= d[1];
-                if (maze[x][y] != -1) q.offer(new int[]{x, y});
+                if (maze[x][y] != -1) {
+                    maze[x][y] == -1;
+                    q.offer(new int[]{x, y});
+                }
             }
         }
         return false;

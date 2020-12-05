@@ -5,17 +5,17 @@ class Solution {
     public int lengthOfLIS(int[] nums) {
         int[] tails = new int[nums.length];
         int size = 0;
-        for (int x : nums) {
-            // insert each x to tails with binary search
+        for (int num : nums) {
+            // insert each num to tails with binary search
             int i = 0, j = size;
-            while (i != j) {
+            while (i < j) {
                 int m = (i + j) / 2;
-                if (tails[m] < x)
+                if (tails[m] < num)
                     i = m + 1;
                 else
                     j = m;
             }
-            tails[i] = x;
+            tails[i] = num;
             if (i == size) ++size;
         }
         return size;
