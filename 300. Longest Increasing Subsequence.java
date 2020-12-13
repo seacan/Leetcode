@@ -4,7 +4,7 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
         int[] tails = new int[nums.length];
-        int size = 0;
+        int size = 0;  // Global value.
         for (int num : nums) {
             // insert each num to tails with binary search
             int i = 0, j = size;

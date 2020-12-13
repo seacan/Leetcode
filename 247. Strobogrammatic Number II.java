@@ -4,7 +4,7 @@
 // n = 2:   11, 69, 88, 96
 // n = 3:   101, 609, 808, 906, 111, 619, 818, 916, 181, 689, 888, 986
 public class Solution {
-    List<String> findStrobogrammatic(int n) {
+    public List<String> findStrobogrammatic(int n) {
         List<String> odd = Arrays.asList("0", "1", "8"), even = Arrays.asList("");
         List<String> res = n % 2 == 1 ? odd : even;
         for (int i = (n % 2) + 2; i <= n; i += 2) {

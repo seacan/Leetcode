@@ -20,6 +20,7 @@ class Solution {
                 cur.left = str2tree(s.substring(start + 1, i));
                 start = i + 1;
             } else if (cnt == 0) {
+                // if the input is valid, we can take the entire rest of the string as right tree
                 cur.right = str2tree(s.substring(start + 1, i));
             }
         }

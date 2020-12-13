@@ -15,7 +15,7 @@ class Solution {
             return;
         }
         for (int i = pos; i < num.length(); i++) {
-            if (i != pos && num.charAt(pos) == '0') break;
+            if (i != pos && num.charAt(pos) == '0') break;   // no need to continue the loop
             long cur = Long.parseLong(num.substring(pos, i + 1));
             // handle special case at 0 index
             if (pos == 0)

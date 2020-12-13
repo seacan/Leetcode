@@ -17,6 +17,7 @@ class Solution {
             for(int i = 0; i < len - distance; i++){
                 int j = i + distance;
                 if(chs[i] == chs[j]){
+                    // move one step
                     int low = i + 1;
                     int high = j - 1;
 

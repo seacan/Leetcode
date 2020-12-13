@@ -18,6 +18,7 @@ class Solution {
                 sol.add(nums[i]);
                 helper(nums, i + 1, sol, res);
                 sol.remove(sol.size() - 1);
+                // no used removal
             }
         }
     }

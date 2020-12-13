@@ -9,7 +9,7 @@ class Solution {
         Set<String> visited = new HashSet<>();
         queue.offer(s);
         visited.add(s);
-        boolean found = false;
+        boolean found = false;  // global checker
         while (!queue.isEmpty()) {
             int size = queue.size();
             for (int j = 0; j < size; j++) {

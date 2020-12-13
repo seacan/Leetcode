@@ -1,7 +1,6 @@
 public class Solution {
     public int findMin(int[] num) {
         int l = 0, r = num.length - 1;
-        int res = 0;
         while (l <= r) {
             if (num[l] < num[r] || l == r)
                 return num[l];

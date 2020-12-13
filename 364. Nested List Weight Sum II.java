@@ -1,7 +1,7 @@
 class Solution {
     public int depthSumInverse(List<NestedInteger> nestedList) {
         int unweighted = 0, weighted = 0;
-        Queue<List<NestedInteger>> q = new PriorityQueue<>();
+        Queue<List<NestedInteger>> q = new PriorityQueue<>();  // Queue the List type.
         q.offer(nestedList);
         while (!q.isEmpty()) {
             int size = q.size();

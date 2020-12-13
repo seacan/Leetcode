@@ -2,7 +2,7 @@
 class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         int[] lands = new int[m * n];
-        for (int i = 0; i < m * n; i++) lands[i] = -1;
+        for (int i = 0; i < m * n; i++) lands[i] = -1;  // -1 as initial value
 
         ArrayList<Integer> result = new ArrayList<>();
         int count = 0;

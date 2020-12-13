@@ -1,19 +1,20 @@
 // Path to the leaf node
-public class Solution {
+class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<String>();
-        if (root == null) return res;
-        String sol = Integer.toString(root.val);
-        binaryTreePathsHelper(root, sol, res);
+        if (root == null) return res;        
+        binaryTreePathsHelper(root, "", res);
         return res;
     }
     
     private void binaryTreePathsHelper(TreeNode root, String sol,  List<String> res) {
+        if (root == null) return;
+        sol = sol.isEmpty() ? Integer.toString(root.val) : sol + "->" + root.val;
         if (root.left == null && root.right == null) {
             res.add(sol);
             return;
         }
-        if (root.left != null) binaryTreePathsHelper(root.left, sol + "->" + root.left.val, res);
-        if (root.right != null) binaryTreePathsHelper(root.right, sol + "->" + root.right.val, res);
+        binaryTreePathsHelper(root.left, sol, res);
+        binaryTreePathsHelper(root.right, sol, res);
     }
 }
