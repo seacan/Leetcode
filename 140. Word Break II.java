@@ -36,19 +36,17 @@ public class Solution {
 }
 
 // Solution 2: DFS on dictionary check
-class Solution {    
+class Solution {
     public List<String> wordBreak(String s, List<String> wordDict) {
-        return DFS(s, wordDict, new HashMap<String, LinkedList<String>>());
+        Map<String, List<String>> dp = new HashMap<>();
+        dp.put("", Arrays.asList(""));
+        return DFS(s, wordDict, dp);
     }
 
-    List<String> DFS(String s, List<String> wordDict, HashMap<String, LinkedList<String>> map) {
+    List<String> DFS(String s, List<String> wordDict, Map<String, List<String>> map) {
         if (map.containsKey(s)) return map.get(s);
 
         LinkedList<String> res = new LinkedList<String>();
-        if (s.length() == 0) {
-            res.add("");
-            return res;
-        }
         for (String word : wordDict) {
             if (s.startsWith(word)) {
                 List<String> sublist = DFS(s.substring(word.length()), wordDict, map);

@@ -1,7 +1,7 @@
 class Solution {
     public int longestConsecutive(TreeNode root) {
         if (root == null) return 0;
-        int res = helper(root, 1) + helper(root, -1) - 1;
+        int res = helper(root, 1) + helper(root, -1) + 1;
         return Math.max(res, Math.max(longestConsecutive(root.left), longestConsecutive(root.right)));
     }
 
