@@ -21,16 +21,17 @@ class Solution {
         }
 
         double[] result = new double[queries.size()];
+        HashSet<String> visited = new HashSet<String>();
         for (int i = 0; i < queries.size(); i++) {
             List<String> query = queries.get(i);
-            result[i] = dfs(query.get(0), query.get(1), pairs, valuesPair, new HashSet<String>(), 1.0);            
+            result[i] = dfs(query.get(0), query.get(1), pairs, valuesPair, visited, 1.0);            
         }
         return result;
     }
 
     private double dfs(String start, String end, HashMap<String, ArrayList<String>> pairs, HashMap<String, ArrayList<Double>> values, HashSet<String> visited, double value) {
         if (visited.contains(start)) return -1.0;
-        if (!pairs.containsKey(start)) return -1.0;
+        if (!pairs.containsKey(start)) return -1.0;  // shortcut node not in the graph
         if (start.equals(end)) return value;
         visited.add(start);
 

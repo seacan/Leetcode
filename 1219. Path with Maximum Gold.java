@@ -10,9 +10,10 @@ class Solution {
 
     public int getMaximumGold(int[][] grid) {
         int ans = 0;
+        Set<Integer> visited = new HashSet<Integer>();
         for (int i = 0; i < grid.length; ++i)
             for (int j = 0; j < grid[0].length; ++j)
-                ans = Math.max(ans, dfs(grid, i, j, new HashSet<Integer>()));
+                ans = Math.max(ans, dfs(grid, i, j, visited));
         return ans;
     }
 
