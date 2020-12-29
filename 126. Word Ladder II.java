@@ -32,18 +32,16 @@ class Solution {
                     String newString = cur.str.substring(0, i) + c + cur.str.substring(i + 1);
                     if (ladder.containsKey(newString)) {
                         if (step > ladder.get(newString)) continue;
-                        if (step <= ladder.get(newString)) {
-                            Tracker newTracker = new Tracker(newString);
-                            newTracker.sol = new ArrayList<>(cur.sol);
-                            newTracker.sol.add(newString);
-                            queue.add(newTracker);
-                            ladder.put(newString, step);
-                        }
+                   
+                        Tracker newTracker = new Tracker(newString);
+                        newTracker.sol = new ArrayList<>(cur.sol);
+                        newTracker.sol.add(newString);
+                        queue.add(newTracker);
+                        ladder.put(newString, step);                        
 
                         if (newString.equals(end)) {
-                            min = step;
-                            cur.sol.add(end);
-                            res.add(cur.sol);
+                            min = step;                            
+                            res.add(newTracker.sol);
                         }
                     }
                 }
