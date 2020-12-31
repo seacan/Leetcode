@@ -15,8 +15,7 @@ public class Solution {
                     String newString = cur.substring(0, i) + c + cur.substring(i + 1);
                     if (ladder.containsKey(newString)) {
                         if (newString.equals(end)) return step;
-                        if (step > ladder.get(newString)) continue;
-                        else if (step < ladder.get(newString)) {
+                        if (step < ladder.get(newString)) {
                             queue.add(newString);
                             ladder.put(newString, step);
                         }
@@ -27,7 +26,7 @@ public class Solution {
     }
 }
 
-
+// Belows are Time Limit Exceeded solutions.
 public int ladderLength(String start, String end, Set<String> dict) {
     Queue<String> worldQueue = new LinkedList<String>();
     Queue<Integer> lengthQueue = new LinkedList<Integer>();
