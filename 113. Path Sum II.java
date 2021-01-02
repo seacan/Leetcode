@@ -1,4 +1,26 @@
 // Solution 1. Classic recursive function
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        List<Integer> sol = new ArrayList<Integer>();
+        pathSumHelper(root, sum, sol, res);
+        return res;
+    }
+
+    private void pathSumHelper(TreeNode root, int sum, List<Integer> sol, List<List<Integer>> res) {
+        if (root == null) return;
+
+        sol.add(root.val);
+        if (root.left == null && root.right == null && root.val == sum) {
+            res.add(new ArrayList<Integer>(sol));
+        } else {
+            pathSumHelper(root.left, sum - root.val, sol, res);
+            pathSumHelper(root.right, sum - root.val, sol, res);
+        }
+        sol.remove(sol.size() - 1);
+    }
+}
+
 public class Solution {
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
