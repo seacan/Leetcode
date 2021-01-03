@@ -62,10 +62,9 @@ class Solution {
 
         for (int i = 1; i <= s.length(); i++)
             for (int j = 1; j <= p.length(); j++) {
-                if (p.charAt(j - 1) != '*') {
-                    if (isMatchHelper(s, i - 1, p, j - 1))
-                        dp[i][j] = dp[i - 1][j - 1];
-                } else {
+                if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '?') {
+                    dp[i][j] = dp[i - 1][j - 1];
+                } else if (p.charAt(j - 1) == '*') {
                     for (int k = i; k >= 0; k--)
                         if (dp[k][j - 1])
                             dp[i][j] = true;
@@ -73,12 +72,5 @@ class Solution {
             }
 
         return dp[s.length()][p.length()];
-    }
-
-    private boolean isMatchHelper(String s, int i, String p, int j) {
-        if (i < s.length() && j < p.length())
-            if (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?')
-                return true;
-        return false;
     }
 }
