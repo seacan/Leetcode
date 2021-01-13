@@ -13,34 +13,50 @@ class Solution {
         return helper(accounts);
     }
 
-    private int helper(List<Integer> accounts) {
-        if (accounts.isEmpty() || accounts.size() == 1) return 0;
-        List<Integer> filtered = new LinkedList<>();
-        for (Integer account : accounts)
-            if (account != 0) filtered.add(account);
+    // Returns min transaction count.
+    public static int helper(List<Integer> accounts) {
+        int cur = 0;
+        while (cur < accounts.size() && accounts.get(cur) == 0) cur++;
+        if (cur == accounts.size()) return 0;
+
+        int balance = accounts.get(cur);
         int res = Integer.MAX_VALUE;
-        for (int i = 1; i < filtered.size(); i++) {
-            List<Integer> merged = new LinkedList<>(filtered);
-            merged.set(i, filtered.get(i) + filtered.get(0));
-            merged.remove(0);
-            res = Math.min(res, helper2(merged) + 1);
+        for (int i = cur + 1; i < accounts.size(); i++) {
+            if (accounts.get(i) != 0) {
+                accounts.set(cur, 0);
+                accounts.set(i, accounts.get(i) + balance);
+                res = Math.min(res, helper(accounts) + 1);
+                accounts.set(cur, balance);
+                accounts.set(i, accounts.get(i) - balance);
+            }
         }
         return res;
     }
 
-    private void helper2(List<Integer> accounts, int start, int cnt) {
-        int n = accounts.size();
-        while (start < n && accounts.get(start) == 0) start++;
-        if (start == n) {
-            res = Math.min(res, cnt);
-            return;
-        }
-        for (int i = start + 1; i < n; i++) {
-            if ((accounts.get(i) < 0 && accounts.get(start) > 0) || (accounts.get(i) > 0 && accounts.get(start) < 0)) {
-                accounts.set(i, accounts.get(i) + accounts.get(start));
-                helper(accounts, start + 1, cnt + 1);
-                accounts.set(i, accounts.get(i) - accounts.get(start));
+    // Returns detailed transactions.
+    public static List<List<Integer>> helper(List<Integer> accounts) {
+        List<List<Integer>> res = new ArrayList<>();
+        int cur = 0;
+        while (cur < accounts.size() && accounts.get(cur) == 0) cur++;
+        if (cur == accounts.size()) return res;
+
+        int balance = accounts.get(cur);
+        int max = Integer.MAX_VALUE;
+        for (int i = cur + 1; i < accounts.size(); i++) {
+            if (accounts.get(i) != 0) {
+                accounts.set(cur, 0);
+                accounts.set(i, accounts.get(i) + balance);
+                List<List<Integer>> remaining = helper(accounts);
+                if (remaining.size() + 1 < max) {
+                    max = remaining.size() + 1;
+                    res.clear();
+                    res.addAll(remaining);
+                    res.add(0, Arrays.asList(cur, i, balance));
+                }
+                accounts.set(cur, balance);
+                accounts.set(i, accounts.get(i) - balance);
             }
         }
+        return res;
     }
 }
