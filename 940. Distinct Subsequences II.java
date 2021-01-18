@@ -1,3 +1,6 @@
+// Input: "aba"
+// Output: 6
+// Explanation: The 6 distinct subsequences are "a", "b", "ab", "ba", "aa" and "aba".
 class Solution {
     public int distinctSubseqII(String S) {
         long end[] = new long[26], mod = (long)1e9 + 7;
