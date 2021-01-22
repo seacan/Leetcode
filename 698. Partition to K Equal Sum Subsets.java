@@ -12,7 +12,7 @@ class Solution {
         if (sum == target)
             return canPartition(a, k - 1, seen, 0, 0, target);
         for (int i = start; i < a.length; i++)
-            if (!seen[i]) {
+            if (!seen[i] && sum + a[i] <= target) {
                 seen[i] = true;
                 if (canPartition(a, k, seen, i + 1, sum + a[i], target))
                     return true;
