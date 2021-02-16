@@ -47,6 +47,7 @@ class Solution {
         if (map.containsKey(s)) return map.get(s);
 
         LinkedList<String> res = new LinkedList<String>();
+        // No matching, sublist is empty, such that no element will be added to res.
         for (String word : wordDict) {
             if (s.startsWith(word)) {
                 List<String> sublist = DFS(s.substring(word.length()), wordDict, map);
